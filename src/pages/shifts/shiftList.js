@@ -51,7 +51,7 @@ const ShiftList = props => {
       <Card body>
         <h5>Turnos</h5>
         <hr />
-        <Table size='sm' hover bordered>
+        <Table size='sm' hover bordered className='bg-forms'>
           <thead>
             <tr>
               <th>Nombre</th>

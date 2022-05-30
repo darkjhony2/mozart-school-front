@@ -54,7 +54,7 @@ const AcademicLevelList = props => {
     <Card body>
       <h5>Grados Academicos</h5>
       <hr />
-      <Table size='sm' hover bordered>
+      <Table size='sm' hover bordered className='bg-forms'>
         <thead>
           <tr>
             <th>Nombre</th>

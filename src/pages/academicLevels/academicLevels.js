@@ -8,7 +8,7 @@ const AcademicLevels = props => {
     //const [academicLevel, setAcademicLevel] = useState(null);
 
     return (
-        <Container fluid className='p-4'>
+        <Container fluid className='p-4 bg-smoke' style={{height: window.innerHeight}}>
             <Row>
                 <Col sm="3">
                     <AcademicLevelList reloadTable = { reloadTable } setReloadTable = { setReloadTable } />

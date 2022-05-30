@@ -12,7 +12,7 @@ const Subjects = props => {
   const [name, setName] = useState("");
   
   return (
-    <Container fluid className='p-4'>
+    <Container fluid className='p-4 bg-smoke' style={{height: window.innerHeight}}>
       <Row>
         <Col sm = "3">
           <SubjectList setReloadTable = { setReloadTable } reloadTable = { reloadTable }

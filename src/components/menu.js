@@ -28,9 +28,8 @@ class Menu extends Component {
     render() {
         return (
             <div>
-                <Navbar className='ps-3 pe-3 bg-blue'
+                <Navbar className='ps-3 pe-3 bg-aqua'
                     style={{ borderBottom: "1px solid black" }}
-                    color="light"
                     expand="md"
                     light
                 >
