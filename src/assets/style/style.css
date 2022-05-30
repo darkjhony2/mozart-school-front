@@ -1,5 +1,5 @@
 .bg-aqua {
-    background-color: rgb(108, 186, 170);
+    background-color: rgb(4, 76, 161);
   }
   
 .bg-smoke {
@@ -8,4 +8,8 @@
 
 .bg-forms {
   background-color: rgb(252, 249, 226);
+}
+
+.font-white {
+  color: rgb(255, 255, 255);
 }

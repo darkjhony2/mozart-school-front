@@ -33,7 +33,7 @@ class Menu extends Component {
                     light
                 >
                     <NavbarBrand href="/">
-                        COLEGIO AMADEO MOZART
+                        <span className='font-white'>COLEGIO AMADEO MOZART</span>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
@@ -43,32 +43,32 @@ class Menu extends Component {
                         >
                             <NavItem>
                                 <NavLink href="subjects">
-                                    Materias
+                                    <span className='font-white'>Materias</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="academicLevels">
-                                    Grados
+                                <span className='font-white'>Grados</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="sections">
-                                    Secciones
+                                <span className='font-white'>Secciones</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="shifts">
-                                    Turnos
+                                <span className='font-white'>Turnos</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="teachers">
-                                    Docentes
+                                    <span className='font-white'>Docentes</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="students">
-                                    Alumnos
+                                <span className='font-white'>Alumnos</span>
                                 </NavLink>
                             </NavItem>
                         </Nav>
