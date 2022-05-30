@@ -2,10 +2,13 @@ import * as connection from './connection'
 
 const URL_API = "https://localhost:7242/"
 
-export const list = () => {
+export const list = (year) => {
     let config = {
         method: 'GET',
-        url: URL_API + "api/Classroom"
+        url: URL_API + "api/Classroom",
+        params: {
+            year
+        }
     }
     return connection.sendPetition(config);
 }

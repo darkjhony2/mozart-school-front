@@ -74,7 +74,7 @@ class Menu extends Component {
                             </NavItem>
                             <NavItem>
                                 <NavLink href="classroom">
-                                    Salones de Clase
+                                <span className='font-white'>Salones de Clase</span>
                                 </NavLink>
                             </NavItem>
                         </Nav>

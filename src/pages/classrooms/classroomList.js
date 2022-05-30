@@ -23,7 +23,7 @@ const SectionsList = props => {
     }, [props.reloadTable])
   
     async function fillClassrooms() {
-      var resp = await apiClassroom.list();
+      var resp = await apiClassroom.list(year);
       setClassrooms(resp);
     }
   
@@ -62,10 +62,10 @@ const SectionsList = props => {
           </thead>
           <tbody>
             {
-              classrooms.map((sec, idx) => {
+              classrooms.map((cl, idx) => {
                 return (
                   <tr key={idx} className="pointer">
-                    <td>{sec.name}</td>
+                    <td>{cl.name}</td>
                     <td style={{ textAlign: 'center' }}><Button size='sm'>Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
                   </tr>
                 )
