@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import * as apiTeacher from '../../api/apiTeacher';
+import * as apiStudent from '../../api/apiStudent'
 import { Button, Card, Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-const TeacherList = props => {
-    const [teachers, setTeachers] = useState([]);
+const StudentList = props => {
+  const [students, setStudents] = useState([]);
     //const MySwal = withReactContent(Swal)
   
     useEffect(() => {
@@ -21,8 +21,8 @@ const TeacherList = props => {
     }, [props.reloadTable])
   
     async function fillSections() {
-      var resp = await apiTeacher.list();
-      setTeachers(resp);
+      var resp = await apiStudent.list();
+      setStudents(resp);
     }
   
     // async function deleteSubject(id) {
@@ -49,35 +49,35 @@ const TeacherList = props => {
   
     return (
       <Card body>
-        <h5>Docentes</h5>
+        <h5>Turnos</h5>
         <hr />
         <Table size='sm' hover bordered>
           <thead>
             <tr>
-              <th>Nombre</th>
+            <th>Nombre</th>
               <th>Apellido Paterno</th>
               <th>Apellido Materno</th>
               <th>Tipo de Documento</th>
               <th>Numero de Documento</th>
-              <th>Teléfono</th>
               <th>Edad</th>
               <th>Genero</th>
+              <th>Grado Académico</th>
               <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
             {
-              teachers.map((teacher, idx) => {
+              students.map((st, idx) => {
                 return (
                   <tr key={idx} className="pointer">
-                    <td>{teacher.name}</td>
-                    <td>{teacher.lastName}</td>
-                    <td>{teacher.mothersLastName}</td>
-                    <td>{teacher.documentType}</td>
-                    <td>{teacher.documentNumber}</td>
-                    <td>{teacher.phone}</td>
-                    <td>{teacher.age}</td>
-                    <td>{teacher.gender}</td>
+                    <td>{st.name}</td>
+                    <td>{st.lastName}</td>
+                    <td>{st.mothersLastName}</td>
+                    <td>{st.documentType}</td>
+                    <td>{st.documentNumber}</td>
+                    <td>{st.age}</td>
+                    <td>{st.gender}</td>
+                    <td>{st.currentAcademicLevel.level}</td>
                     <td style={{ textAlign: 'center' }}><Button size='sm'>Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
                   </tr>
                 )
@@ -89,6 +89,6 @@ const TeacherList = props => {
     )
 }
 
-TeacherList.propTypes = {}
+StudentList.propTypes = {}
 
-export default TeacherList
+export default StudentList

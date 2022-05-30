@@ -8,6 +8,7 @@ import AcademicLevels from '../pages/academicLevels/academicLevels';
 import Sections from '../pages/sections/sections';
 import Shifts from '../pages/shifts/shifts';
 import Teachers from '../pages/teachers/teachers';
+import Students from '../pages/students/students';
 
 class Menu extends Component {
 
@@ -66,6 +67,11 @@ class Menu extends Component {
                                     Docentes
                                 </NavLink>
                             </NavItem>
+                            <NavItem>
+                                <NavLink href="students">
+                                    Alumnos
+                                </NavLink>
+                            </NavItem>
                         </Nav>
                     </Collapse>
                 </Navbar>
@@ -76,6 +82,7 @@ class Menu extends Component {
                         <Route path={'/sections'} element={<Sections />} />
                         <Route path={'/shifts'} element={<Shifts />} />
                         <Route path={'/teachers'} element={<Teachers />} />
+                        <Route path={'/students'} element={<Students />} />
                         <Route path={'/'} exact={true} element={<Home />} />
                     </Routes>
                 </BrowserRouter>
