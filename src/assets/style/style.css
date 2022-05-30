@@ -1,4 +1,11 @@
-.bg-blue {
-    background-color: rgb(12, 54, 109);
+.bg-aqua {
+    background-color: rgb(108, 186, 170);
   }
   
+.bg-smoke {
+  background-color: rgb(210, 210, 210);
+}
+
+.bg-forms {
+  background-color: rgb(252, 249, 226);
+}

@@ -8,7 +8,7 @@ const Shifts = props => {
     //const [academicLevel, setAcademicLevel] = useState(null);
 
     return (
-        <Container fluid className='p-4'>
+        <Container fluid className='p-4 bg-smoke' style={{height: window.innerHeight}}>
             <Row>
                 <Col sm="2">
                     <ShiftList reloadTable = { reloadTable } setReloadTable = { setReloadTable } />

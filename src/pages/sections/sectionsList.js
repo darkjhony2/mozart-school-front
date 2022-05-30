@@ -53,7 +53,7 @@ const SectionsList = props => {
       <Card body>
         <h5>Secciones</h5>
         <hr />
-        <Table size='sm' hover bordered>
+        <Table size='sm' hover bordered className='bg-forms'>
           <thead>
             <tr>
               <th>Nombre</th>
