@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import TeacherList from './teacherList';
 import { Col, Container, Row } from 'reactstrap';
-import AcademicLevelList from './academicLevelList';
 
-const AcademicLevels = props => {
+const Teachers = props => {
     const [reloadTable, setReloadTable] = useState(false);
     //const [academicLevel, setAcademicLevel] = useState(null);
 
     return (
         <Container fluid className='p-4'>
             <Row>
-                <Col sm="3">
-                    <AcademicLevelList reloadTable = { reloadTable } setReloadTable = { setReloadTable } />
+                <Col sm="8">
+                    <TeacherList />
                 </Col>
             </Row>
         </Container>
     )
 }
 
-AcademicLevels.propTypes = {}
+Teachers.propTypes = {}
 
-export default AcademicLevels
+export default Teachers

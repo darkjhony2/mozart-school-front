@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Col, Container, Row } from 'reactstrap';
-import AcademicLevelList from './academicLevelList';
+import ShiftList from './shiftList';
 
-const AcademicLevels = props => {
+const Shifts = props => {
     const [reloadTable, setReloadTable] = useState(false);
     //const [academicLevel, setAcademicLevel] = useState(null);
 
     return (
         <Container fluid className='p-4'>
             <Row>
-                <Col sm="3">
-                    <AcademicLevelList reloadTable = { reloadTable } setReloadTable = { setReloadTable } />
+                <Col sm="2">
+                    <ShiftList reloadTable = { reloadTable } setReloadTable = { setReloadTable } />
                 </Col>
             </Row>
         </Container>
     )
 }
 
-AcademicLevels.propTypes = {}
+Shifts.propTypes = {}
 
-export default AcademicLevels
+export default Shifts
