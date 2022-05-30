@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Collapse, DropdownItem, DropdownMenu, DropdownToggle, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, UncontrolledDropdown } from 'reactstrap'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Subjects from '../pages/Subjects/subjects';
+import Subjects from '../pages/subjects/subjects';
 import Home from '../pages/home'
+import AcademicLevels from '../pages/academicLevels/academicLevels';
 
 class Menu extends Component {
 
@@ -23,7 +24,7 @@ class Menu extends Component {
         return (
             <div>
                 <Navbar className='ps-3 pe-3 bg-blue'
-                    style={{ borderBottom: "1px solid black"}}
+                    style={{ borderBottom: "1px solid black" }}
                     color="light"
                     expand="md"
                     light
@@ -42,12 +43,18 @@ class Menu extends Component {
                                     Materias
                                 </NavLink>
                             </NavItem>
+                            <NavItem>
+                                <NavLink href="academicLevels">
+                                    Grados
+                                </NavLink>
+                            </NavItem>
                         </Nav>
                     </Collapse>
                 </Navbar>
                 <BrowserRouter>
                     <Routes>
                         <Route path={'/subjects'} element={<Subjects />} />
+                        <Route path={'/academicLevels'} element={<AcademicLevels />} />
                         <Route path={'/'} exact={true} element={<Home />} />
                     </Routes>
                 </BrowserRouter>
