@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Col, Container, Row } from 'reactstrap';
 import SectionsList from './sectionsList';
+import SaveSection from './saveSection';
 
 const Sections = props => {
     const [reloadTable, setReloadTable] = useState(false);
@@ -12,6 +13,9 @@ const Sections = props => {
             <Row>
                 <Col sm="2">
                     <SectionsList reloadTable = { reloadTable } setReloadTable ={ setReloadTable } />
+                </Col>
+                <Col sm="3">
+                    <SaveSection setReloadTable = { setReloadTable } />
                 </Col>
             </Row>
         </Container>

@@ -5,10 +5,13 @@ import Swal from 'sweetalert2';
 import { Button, Card, Table } from 'reactstrap';
 import * as apiClassroom from '../../api/apiClassroom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import ModalClassroomSchedule from './modalClassroomSchedule';
 
-const SectionsList = props => {
+const ClassroomList = props => {
     const [classrooms, setClassrooms] = useState([]);
+    const [showModalSchedule, setShowModalSchedule] = useState(false);
+    const [idClassroom, setIdClassroom] = useState("");
     //const MySwal = withReactContent(Swal)
   
     useEffect(() => {
@@ -23,8 +26,13 @@ const SectionsList = props => {
     }, [props.reloadTable])
   
     async function fillClassrooms() {
-      var resp = await apiClassroom.list(year);
+      var resp = await apiClassroom.list(2022);
       setClassrooms(resp);
+    }
+
+    function showSchedule(id){
+      setShowModalSchedule(true);
+      setIdClassroom(id);
     }
   
     // async function deleteSubject(id) {
@@ -50,14 +58,18 @@ const SectionsList = props => {
     // }
   
     return (
+      <>
       <Card body>
-        <h5>Secciones</h5>
+        <h5>Salones de Clase</h5>
         <hr />
-        <Table size='sm' hover bordered>
+        <Table size='sm' hover bordered className='bg-forms'>
           <thead>
             <tr>
-              <th>Nombre</th>
-              <th>Eliminar</th>
+              <th>Grado</th>
+              <th>Sección</th>
+              <th>Turno</th>
+              <th>Tutor</th>
+              <th>Horario</th>
             </tr>
           </thead>
           <tbody>
@@ -65,8 +77,11 @@ const SectionsList = props => {
               classrooms.map((cl, idx) => {
                 return (
                   <tr key={idx} className="pointer">
-                    <td>{cl.name}</td>
-                    <td style={{ textAlign: 'center' }}><Button size='sm'>Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
+                    <td>{cl.level.level}</td>
+                    <td>{cl.section.name}</td>
+                    <td>{cl.shift.name}</td>
+                    <td>{cl.tutor.name}</td>
+                    <td style={{ textAlign: 'center' }}><Button size='sm' onClick={e =>  showSchedule(cl.id) } >Ver Horario <FontAwesomeIcon icon={faEye} /> </Button></td>
                   </tr>
                 )
               })
@@ -74,9 +89,11 @@ const SectionsList = props => {
           </tbody>
         </Table>
       </Card>
+      <ModalClassroomSchedule idClassroom = { idClassroom } isOpen = { showModalSchedule } setIsOpen= { setShowModalSchedule } />
+      </>
     )
 }
 
-SectionsList.propTypes = {}
+ClassroomList.propTypes = {}
 
-export default SectionsList
+export default ClassroomList

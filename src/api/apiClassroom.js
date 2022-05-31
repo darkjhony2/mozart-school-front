@@ -5,10 +5,7 @@ const URL_API = "https://localhost:7242/"
 export const list = (year) => {
     let config = {
         method: 'GET',
-        url: URL_API + "api/Classroom",
-        params: {
-            year
-        }
+        url: URL_API + "api/Classroom" + "?year=" + year
     }
     return connection.sendPetition(config);
 }

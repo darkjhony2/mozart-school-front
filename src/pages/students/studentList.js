@@ -49,7 +49,7 @@ const StudentList = props => {
   
     return (
       <Card body>
-        <h5>Turnos</h5>
+        <h5>Alumnos</h5>
         <hr />
         <Table size='sm' hover bordered className='bg-forms'>
           <thead>

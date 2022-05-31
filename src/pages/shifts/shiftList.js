@@ -10,17 +10,17 @@ const ShiftList = props => {
     //const MySwal = withReactContent(Swal)
   
     useEffect(() => {
-      fillSections();
+      fillShifts();
     }, [])
   
     useEffect(() => {
       if (props.reloadTable) {
-        fillSections();
+        fillShifts();
         props.setReloadTable(false);
       }
     }, [props.reloadTable])
   
-    async function fillSections() {
+    async function fillShifts() {
       var resp = await ApiShift.list();
       setShifts(resp);
     }
