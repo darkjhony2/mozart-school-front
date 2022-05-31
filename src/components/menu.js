@@ -10,6 +10,7 @@ import Shifts from '../pages/shifts/shifts';
 import Teachers from '../pages/teachers/teachers';
 import Students from '../pages/students/students';
 import Classrooms from '../pages/classrooms/classrooms';
+import logo from '../assets/img/logo.png'
 
 class Menu extends Component {
 
@@ -34,7 +35,8 @@ class Menu extends Component {
                     light
                 >
                     <NavbarBrand href="/">
-                        <span className='font-white'>COLEGIO AMADEO MOZART</span>
+                        <img src={logo} className="img-fluid" style={{maxHeight: 50}}></img>
+                        <span className='font-white'><b>COLEGIO AMADEO MOZART</b></span>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
