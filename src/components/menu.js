@@ -46,37 +46,37 @@ class Menu extends Component {
                             navbar
                         >
                             <NavItem>
-                                <NavLink href={this.state.url_root + '/subjects/'}>
+                                <NavLink href={this.state.url_root + '/subjects'}>
                                     <span className='font-white'>Materias</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href={this.state.url_root + "/academicLevels/"}>
+                                <NavLink href={this.state.url_root + "/academicLevels"}>
                                 <span className='font-white'>Grados</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href={this.state.url_root + "/sections/"}>
+                                <NavLink href={this.state.url_root + "/sections"}>
                                 <span className='font-white'>Secciones</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href={this.state.url_root + "/shifts/"}>
+                                <NavLink href={this.state.url_root + "/shifts"}>
                                 <span className='font-white'>Turnos</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href={this.state.url_root + "/teachers/"}>
+                                <NavLink href={this.state.url_root + "/teachers"}>
                                     <span className='font-white'>Docentes</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href={this.state.url_root + "/students/"}>
+                                <NavLink href={this.state.url_root + "/students"}>
                                 <span className='font-white'>Alumnos</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href={this.state.url_root + "/classroom/"}>
+                                <NavLink href={this.state.url_root + "/classroom"}>
                                 <span className='font-white'>Salones de Clase</span>
                                 </NavLink>
                             </NavItem>
