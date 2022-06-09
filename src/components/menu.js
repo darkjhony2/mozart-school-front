@@ -84,14 +84,14 @@ class Menu extends Component {
                 </Navbar>
                 <BrowserRouter>
                     <Routes>
-                        <Route path={'/mozart-school-front/subjects'} element={<Subjects />} />
-                        <Route path={'/mozart-school-front/academicLevels'} element={<AcademicLevels />} />
-                        <Route path={'/mozart-school-front/sections'} element={<Sections />} />
-                        <Route path={'/mozart-school-front/shifts'} element={<Shifts />} />
-                        <Route path={'/mozart-school-front/teachers'} element={<Teachers />} />
-                        <Route path={'/mozart-school-front/students'} element={<Students />} />
-                        <Route path={'/mozart-school-front/classroom'} element={<Classrooms />} />
-                        <Route path={'/mozart-school-front/'} exact={true} element={<Home />} />
+                        <Route path={'/subjects'} element={<Subjects />} />
+                        <Route path={'/academicLevels'} element={<AcademicLevels />} />
+                        <Route path={'/sections'} element={<Sections />} />
+                        <Route path={'/shifts'} element={<Shifts />} />
+                        <Route path={'/teachers'} element={<Teachers />} />
+                        <Route path={'/students'} element={<Students />} />
+                        <Route path={'/classroom'} element={<Classrooms />} />
+                        <Route path={'/'} exact={true} element={<Home />} />
                     </Routes>
                 </BrowserRouter>
             </div>
