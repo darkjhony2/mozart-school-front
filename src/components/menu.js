@@ -17,7 +17,8 @@ class Menu extends Component {
     constructor() {
         super();
         this.state = {
-            isOpen: false
+            isOpen: false,
+            url_root: 'https://darkjhony2.github.io/mozart-school-front'
         }
     }
 
@@ -45,44 +46,44 @@ class Menu extends Component {
                             navbar
                         >
                             <NavItem>
-                                <NavLink href="subjects">
+                                <NavLink href={this.state.url_root + '/subjects/'}>
                                     <span className='font-white'>Materias</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="academicLevels">
+                                <NavLink href={this.state.url_root + "/academicLevels/"}>
                                 <span className='font-white'>Grados</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="sections">
+                                <NavLink href={this.state.url_root + "/sections/"}>
                                 <span className='font-white'>Secciones</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="shifts">
+                                <NavLink href={this.state.url_root + "/shifts/"}>
                                 <span className='font-white'>Turnos</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="teachers">
+                                <NavLink href={this.state.url_root + "/teachers/"}>
                                     <span className='font-white'>Docentes</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="students">
+                                <NavLink href={this.state.url_root + "/students/"}>
                                 <span className='font-white'>Alumnos</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="classroom">
+                                <NavLink href={this.state.url_root + "/classroom/"}>
                                 <span className='font-white'>Salones de Clase</span>
                                 </NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
                 </Navbar>
-                <BrowserRouter>
+                <BrowserRouter basename={this.state.url_root}>
                     <Routes>
                         <Route path={'/subjects'} element={<Subjects />} />
                         <Route path={'/academicLevels'} element={<AcademicLevels />} />
