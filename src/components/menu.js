@@ -18,7 +18,7 @@ class Menu extends Component {
         super();
         this.state = {
             isOpen: false,
-            url_root: 'https://darkjhony2.github.io/mozart-school-front'
+            url_root: '/mozart-school-front'
         }
     }
 
