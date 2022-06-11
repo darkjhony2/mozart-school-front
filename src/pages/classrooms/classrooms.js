@@ -8,7 +8,7 @@ const Classrooms = props => {
     const [reloadTable, setReloadTable] = useState(false);
 
     return (
-        <Container fluid className='p-4'>
+        <Container fluid className='p-4 bg-smoke' style={{height: window.innerHeight}}>
             <Row>
                 <Col sm="6">
                     <ClassroomList reloadTable = { reloadTable } setReloadTable = { setReloadTable } />
