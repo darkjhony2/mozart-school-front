@@ -10,28 +10,33 @@ import withReactContent from 'sweetalert2-react-content'
 const SaveSubject = (props) => {
 
     const MySwal = withReactContent(Swal)
+    const [idEdit, setIdEdit] = useState(-1);
+    const [name, setName] = useState("");
 
     useEffect(() => {
         if (props.subject != null) {
-            props.setName(props.subject.name);
-            props.setIdEdit(props.subject.id);
+            setName(props.subject.name);
+            setIdEdit(props.subject.id);
+        }else{
+            setName("");
+            setIdEdit(-1);
         }
     }, [props.subject])
 
 
     async function save() {
         var subject = {};
-        if (props.idEdit != null) {
-            subject.id = props.idEdit;
+        if (idEdit > 0) {
+            subject.id = idEdit;
         }
-        if (props.name.trim() == "") {
+        if (name.trim() == "") {
             MySwal.fire({
                 icon: 'error',
                 title: 'Error',
                 text: "Debe llenar el campo de nombre de la materia.",
             });
         } else {
-            subject.name = props.name;
+            subject.name = name;
         }
 
         var resp = await apiSubject.save(subject);
@@ -51,12 +56,12 @@ const SaveSubject = (props) => {
             title: 'Ok',
             text: "Se guardo Correctamente"
         });
-        props.setName("");
+        clean();
     }
 
     function clean() {
-        props.setName("");
-        props.setIdEdit(undefined);
+        setName("");
+        setIdEdit(-1);
     }
 
     return (
@@ -67,7 +72,7 @@ const SaveSubject = (props) => {
                 <Col sm="8">
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Nombre</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={props.name} onChange={e => props.setName(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={name} onChange={e => setName(e.target.value)}></Input>
                     </FormGroup>
                     <Row>
                     <Col sm="5">

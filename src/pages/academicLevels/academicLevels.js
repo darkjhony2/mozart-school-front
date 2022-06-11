@@ -5,7 +5,6 @@ import AcademicLevelList from './academicLevelList';
 
 const AcademicLevels = props => {
     const [reloadTable, setReloadTable] = useState(false);
-    //const [academicLevel, setAcademicLevel] = useState(null);
 
     return (
         <Container fluid className='p-4 bg-smoke' style={{height: window.innerHeight}}>

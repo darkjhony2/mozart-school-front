@@ -47,8 +47,7 @@ const SubjectList = (props) => {
       text: "Se guardo Correctamente"
   });
   props.setReloadTable(true);
-  props.setName("");
-  props.setIdEdit(undefined);
+  props.setSubject(null);
   }
 
   return (
