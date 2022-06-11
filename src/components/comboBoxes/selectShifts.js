@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import * as ApiShift from '../api/apiShift'
+import * as ApiShift from '../../api/apiShift'
 import { FormGroup, Input, Label } from 'reactstrap';
 
 const SelectShifts = props => {

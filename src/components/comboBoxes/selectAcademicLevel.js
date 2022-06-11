@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import * as apiAcademicLevel from '../api/apiAcademicLevel'
+import * as apiAcademicLevel from '../../api/apiAcademicLevel'
 import { FormGroup, Input, Label } from 'reactstrap';
 
 const SelectAcademicLevels = props => {

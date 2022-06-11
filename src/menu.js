@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Collapse, DropdownItem, DropdownMenu, DropdownToggle, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, UncontrolledDropdown } from 'reactstrap'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Subjects from '../pages/subjects/subjects';
-import Home from '../pages/home'
-import AcademicLevels from '../pages/academicLevels/academicLevels';
-import Sections from '../pages/sections/sections';
-import Shifts from '../pages/shifts/shifts';
-import Teachers from '../pages/teachers/teachers';
-import Students from '../pages/students/students';
-import Classrooms from '../pages/classrooms/classrooms';
-import logo from '../assets/img/logo.png'
+import Subjects from './pages/subjects/subjects';
+import Home from './pages/home'
+import AcademicLevels from './pages/academicLevels/academicLevels';
+import Sections from './pages/sections/sections';
+import Shifts from './pages/shifts/shifts';
+import Teachers from './pages/teachers/teachers';
+import Students from './pages/students/students';
+import Classrooms from './pages/classrooms/classrooms';
+import logo from './assets/img/logo.png'
 
 class Menu extends Component {
 

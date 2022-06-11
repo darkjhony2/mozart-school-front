@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import withReactContent from 'sweetalert2-react-content'
 import Swal from 'sweetalert2'
 import * as apiClassroom from '../../api/apiClassroom'
-import { Button, Card, Col, FormGroup, Input, Label, Row } from 'reactstrap'
+import { Button, Card, Col, FormGroup, Label, Row } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk, faPlus } from '@fortawesome/free-solid-svg-icons'
-import SelectShifts from '../../components/selectShifts'
-import SelectAcademicLevels from '../../components/selectAcademicLevel'
-import SelectTeachers from '../../components/selectTeachers'
-import SelectSections from '../../components/selectSections'
+import SelectAcademicLevels from '../../components/comboBoxes/selectAcademicLevel'
+import SelectShifts from '../../components/comboBoxes/selectShifts'
+import SelectTeachers from '../../components/comboBoxes/selectTeachers'
+import SelectSections from '../../components/comboBoxes/selectSections'
+
 
 const SaveClassroom = props => {
 
