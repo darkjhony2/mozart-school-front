@@ -45,8 +45,6 @@ const StudentList = props => {
         text: "Se guardo Correctamente"
       });
       props.setReloadTable(true);
-      props.setName("");
-      props.setIdEdit(undefined);
     }
   
     return (
@@ -80,7 +78,7 @@ const StudentList = props => {
                     <td>{st.age}</td>
                     <td>{st.gender}</td>
                     <td>{st.currentAcademicLevel.level}</td>
-                    <td style={{ textAlign: 'center' }}><Button size='sm'>Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
+                    <td style={{ textAlign: 'center' }}><Button size='sm' onClick={e=>deleteStudent(st.id)}>Eliminar <FontAwesomeIcon icon={faTrash}/> </Button></td>
                   </tr>
                 )
               })

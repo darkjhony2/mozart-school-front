@@ -7,14 +7,14 @@ import SaveStudent from './saveStudent';
 const Students = props => {
     const [reloadTable, setReloadTable] = useState(false);
     const [student, setStudent] = useState(undefined);
-    
+
     return (
         <Container fluid className='p-4 bg-smoke' style={{height: window.innerHeight}}>
             <Row>
-                <Col sm="2">
+                <Col sm="8">
                     <StudentList reloadTable= {reloadTable} setReloadTable = { setReloadTable } setStudent = {setStudent}/>
                 </Col>
-                <Col sm="2">
+                <Col sm="4">
                     <SaveStudent student={ student } setStudent = {setStudent} setReloadTable = { setReloadTable }/>
                 </Col>                
             </Row>

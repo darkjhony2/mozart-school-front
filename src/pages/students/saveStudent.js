@@ -9,6 +9,8 @@ import withReactContent from 'sweetalert2-react-content'
 import SelectAcademicLevels from '../../components/comboBoxes/selectAcademicLevel'
 import SelectAcademicScales from '../../components/comboBoxes/selectAcademicScale'
 import SelectDocumentType from '../../components/comboBoxes/selectDocumentType'
+import SelectGender from '../../components/comboBoxes/selectGender'
+import { type } from '@testing-library/user-event/dist/type'
 
 const SaveStudent = (props) => {
 
@@ -18,8 +20,7 @@ const SaveStudent = (props) => {
     const [documentNumber, setDocumentNumber] = useState("");
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [motherlastName, setMotherLastName] = useState("");
-    const [age, setAge] = useState(-1);
+    const [motherLastName, setMotherLastName] = useState("");
     const [gender, setGender] = useState("");
     const [currentAcademicLevel, setCurrentAcademicLevel] = useState(-1);
 
@@ -31,7 +32,6 @@ const SaveStudent = (props) => {
             setName(props.student.name);
             setLastName(props.student.lastName);
             setMotherLastName(props.student.motherlastName);
-            setAge(props.student.age);
             setGender(props.student.gender);
             setCurrentAcademicLevel(props.student.currentAcademicLevel);
         } else {  
@@ -41,7 +41,6 @@ const SaveStudent = (props) => {
             setName("");
             setLastName("");
             setMotherLastName("");
-            setAge(-1);
             setGender("");
             setCurrentAcademicLevel(-1);
         }
@@ -61,7 +60,7 @@ const SaveStudent = (props) => {
             });
             return;
         } else {
-            student.documentType = documentType;
+            student.documentTypeId = documentType;
         }
         if (documentNumber.trim() == "") {
             MySwal.fire({
@@ -71,7 +70,7 @@ const SaveStudent = (props) => {
             });
             return;
         } else {
-            student.setDocumentNumber = documentNumber;
+            student.documentNumber = documentNumber;
         }
         if (name.trim() == "") {
             MySwal.fire({
@@ -81,7 +80,7 @@ const SaveStudent = (props) => {
             });
             return;
         } else {
-            student.setDocumentNumber = documentNumber;
+            student.name = name;
         }
 
         if (lastName.trim() == "") {
@@ -92,8 +91,38 @@ const SaveStudent = (props) => {
             });
             return;
         } else {
-            student.name = name;
+            student.lastName = lastName;
         }
+        if (motherLastName.trim() == "") {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Debe llenar el campo de apellido materno del estudiante.",
+            });
+            return;
+        } else {
+            student.mothersLastName =  motherLastName;
+        }            
+        if (gender.trim() == "") {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Debe seleccionar el genero del estudiante.",
+            });
+            return;
+        } else {
+            student.genderId = gender;
+        }   
+        if (currentAcademicLevel<1) {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Debe seleccionar un grado académico.",
+            });
+            return;
+        } else {
+            student.currentAcademicLevelId = currentAcademicLevel;
+        }   
 
         var resp = await apiStudent.save(student);
         props.setReloadTable(true);
@@ -132,11 +161,28 @@ const SaveStudent = (props) => {
                         <Input size='sm' placeholder='Ingrese nombre del estudiante' value={name} onChange={e => setName(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
-                       <SelectAcademicLevels academicLevel={ currentAcademicLevel } setAcademicLevel= { setCurrentAcademicLevel } previousLevelLabel="Grado actual"/>
+                        <Label size='sm'>Apellido Paterno</Label>
+                        <Input size='sm' placeholder='Ingrese apellido paterno del estudiante' value={lastName} onChange={e => setLastName(e.target.value)}></Input>
                     </FormGroup>
+                    <FormGroup className='mb-1'>
+                        <Label size='sm'>Apellido Materno</Label>
+                        <Input size='sm' placeholder='Ingrese apellido materno del estudiante' value={motherLastName} onChange={e => setMotherLastName(e.target.value)}></Input>
+                    </FormGroup>          
                     <FormGroup className='mb-1'>
                        <SelectDocumentType documentType={ documentType } setDocumentType= { setDocumentType }/>
                     </FormGroup>
+                    <FormGroup className='mb-1'>
+                        <Label size='sm'>Numero de Documento</Label>
+                        <Input size='sm' placeholder='Ingrese numero de documento' value={documentNumber} onChange={e => setDocumentNumber(e.target.value)}></Input>
+                    </FormGroup>    
+                    <FormGroup className='mb-1'>
+                       <SelectGender gender={ gender } setGender= { setGender }/>
+                    </FormGroup>     
+                    <FormGroup className='mb-1'>
+                       <SelectAcademicLevels academicLevel={ currentAcademicLevel } setAcademicLevel= { setCurrentAcademicLevel } previousLevelLabel="Grado actual"/>
+                    </FormGroup>
+ 
+
                     <Row>
                         <Col sm="5">
                             <Button style={{ marginRight: 0 }} size='sm' onClick={e => save()}>Grabar <FontAwesomeIcon icon={faFloppyDisk} /> </Button>
