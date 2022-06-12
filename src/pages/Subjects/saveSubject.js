@@ -62,7 +62,7 @@ const SaveSubject = (props) => {
 
     function clean() {
         setName("");
-        setIdEdit(-1);
+        setIdEdit(undefined);
     }
 
     return (
