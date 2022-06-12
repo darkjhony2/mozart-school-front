@@ -53,11 +53,42 @@ const SaveStudent = (props) => {
         if (idEdit > 0) {
             student.id = idEdit;
         }
+        if (documentType<1) {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Debe seleccionar un tipo de documento.",
+            });
+            return;
+        } else {
+            student.documentType = documentType;
+        }
+        if (documentNumber.trim() == "") {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Debe digitar un numero de documento.",
+            });
+            return;
+        } else {
+            student.setDocumentNumber = documentNumber;
+        }
         if (name.trim() == "") {
             MySwal.fire({
                 icon: 'error',
                 title: 'Error',
                 text: "Debe llenar el campo de nombre del estudiante.",
+            });
+            return;
+        } else {
+            student.setDocumentNumber = documentNumber;
+        }
+
+        if (lastName.trim() == "") {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Debe llenar el campo de apellido del estudiante.",
             });
             return;
         } else {
@@ -98,7 +129,7 @@ const SaveStudent = (props) => {
                 <Col sm="10">
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Nombre</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del turno' value={name} onChange={e => setName(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese nombre del estudiante' value={name} onChange={e => setName(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
                        <SelectAcademicLevels academicLevel={ currentAcademicLevel } setAcademicLevel= { setCurrentAcademicLevel } previousLevelLabel="Grado actual"/>
