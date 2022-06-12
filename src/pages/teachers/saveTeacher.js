@@ -97,7 +97,7 @@ const SaveTeacher = (props) => {
             });
             return;
         } else {
-            teacher.documentType = documentType;
+            teacher.documentTypeId = documentType;
         }
 
         if (documentNumber.trim() == "") {
@@ -119,7 +119,7 @@ const SaveTeacher = (props) => {
             });
             return;
         } else {
-            teacher.gender = gender;
+            teacher.genderId = gender;
         }
 
         if (email.trim() == "") {
@@ -186,37 +186,37 @@ const SaveTeacher = (props) => {
                 <Col sm="8">
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Nombre</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={name} onChange={e => setName(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese nombre del nuevo docente' value={name} onChange={e => setName(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Apellido Paterno</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={lastName} onChange={e => setLastName(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese apellido paterno del nuevo docente' value={lastName} onChange={e => setLastName(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Apellido Materno</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={mothersLastName} onChange={e => setMothersLastName(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese apellido materno del nuevo docente' value={mothersLastName} onChange={e => setMothersLastName(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Fecha de nacimiento</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)}></Input>
+                        <Input size='sm' type='date' value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <SelectDocumentType documentType = { documentType } setDocumentType = { setDocumentType } />
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Número de documento</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={documentNumber} onChange={e => setDocumentNumber(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese número de documento' value={documentNumber} onChange={e => setDocumentNumber(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <SelectGender gender = { gender } setGender = { setGender } />
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Correo</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={email} onChange={e => setEmail(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese correo del nuevo docente' value={email} onChange={e => setEmail(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Teléfono</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={phone} onChange={e => setPhone(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese teléfono del nuevo docente' value={phone} onChange={e => setPhone(e.target.value)}></Input>
                     </FormGroup>
                     <Row>
                         <Col sm="5">

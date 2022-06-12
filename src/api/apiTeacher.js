@@ -24,3 +24,8 @@ export const save = (teacher) => {
         return connection.sendPostBody(config,teacher);
     }
 }
+
+export const deleteTeacher = (id) => {
+    const url = URL_API + "api/Teacher/" + id;
+    return connection.sendDeleteBody(url);
+}
