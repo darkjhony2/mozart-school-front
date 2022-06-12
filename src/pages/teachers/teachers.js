@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import TeacherList from './teacherList';
 import { Col, Container, Row } from 'reactstrap';
+import SaveTeacher from './saveTeacher';
 
 const Teachers = props => {
     const [reloadTable, setReloadTable] = useState(false);
@@ -12,6 +13,9 @@ const Teachers = props => {
             <Row>
                 <Col sm="8">
                     <TeacherList />
+                </Col>
+                <Col sm="4">
+                    <SaveTeacher />
                 </Col>
             </Row>
         </Container>
