@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'reactstrap'
 import SubjectList from './subjectList'
 import SaveSubject from './saveSubject'
 
-const Subjects = props => {
+const Subjects = (props) => {
 
   const [reloadTable, setReloadTable] = useState(false);
   const [subject, setSubject] = useState(null);

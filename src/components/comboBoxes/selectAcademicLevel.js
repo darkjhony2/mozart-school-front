@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import * as apiAcademicLevel from '../../api/apiAcademicLevel'
 import { FormGroup, Input, Label } from 'reactstrap';
 
@@ -28,8 +29,14 @@ const SelectAcademicLevels = props => {
 
     return (
         <FormGroup className='mb-2'>
-            <Label size='sm'>Grados Académicos:</Label>
-            <Input type='select' size='sm' value={props.academicLevel} onChange = { setShift } >
+            {
+                props.previousLevelLabel != undefined ?
+                    <Label size='sm'>{props.previousLevelLabel}:</Label>
+                    :
+                    <Label size='sm'>Grados Académicos:</Label>
+            }
+
+            <Input type='select' size='sm' value={props.academicLevel} onChange={setShift} >
                 <option value='-1'>[Seleccione]</option>
                 {academicLevels}
             </Input>
@@ -37,6 +44,8 @@ const SelectAcademicLevels = props => {
     )
 }
 
-SelectAcademicLevels.propTypes = {}
+SelectAcademicLevels.propTypes = {
+    previousLevelLabel: PropTypes.string
+}
 
 export default SelectAcademicLevels

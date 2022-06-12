@@ -28,27 +28,26 @@ const AcademicLevelList = props => {
     setAcademicLevels(resp);
   }
 
-  // async function deleteSubject(id) {
-  //   var resp = await apiSubject.deleteSubject(id);
-  //   if (resp.response != undefined) {
-  //     if (resp.response.status != 200) {
-  //       MySwal.fire({
-  //         icon: 'error',
-  //         title: 'Error',
-  //         text: resp.response.data.detail,
-  //       });
-  //       return;
-  //     }
-  //   }
-  //   MySwal.fire({
-  //     icon: 'success',
-  //     title: 'Ok',
-  //     text: "Se guardo Correctamente"
-  //   });
-  //   props.setReloadTable(true);
-  //   props.setName("");
-  //   props.setIdEdit(undefined);
-  // }
+  async function deleteAcademicLevel(id) {
+    var resp = await apiAcademicLevel.deleteAcademicLevel(id);
+    if (resp.response != undefined) {
+      if (resp.response.status != 200) {
+        MySwal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: resp.response.data.detail,
+        });
+        return;
+      }
+    }
+    MySwal.fire({
+      icon: 'success',
+      title: 'Ok',
+      text: "Se guardo Correctamente"
+    });
+    props.setReloadTable(true);
+    props.setAcademicLevel(null);
+  }
 
   return (
     <Card body>
@@ -67,11 +66,11 @@ const AcademicLevelList = props => {
           {
             academicLevels.map((al, idx) => {
               return (
-                <tr key={idx} className="pointer">
+                <tr key={idx} className="pointer" onClick={ e => props.setAcademicLevel(al)} >
                   <td>{al.level}</td>
                   <td>{al.scale}</td>
                   <td>{al.previousAcademicLevel}</td>
-                  <td style={{ textAlign: 'center' }}><Button size='sm'>Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
+                  <td style={{ textAlign: 'center' }}><Button size='sm' onClick = { e => deleteAcademicLevel(al.id) } >Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
                 </tr>
               )
             })

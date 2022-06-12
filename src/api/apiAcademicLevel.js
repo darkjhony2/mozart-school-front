@@ -17,10 +17,15 @@ export const save = (academicLevel) => {
         let configEdit = {
             url: URL_API + "api/AcademicLevel/" + academicLevel.id,
         }
-        if(academicLevel.id.trim() != ""){
+        if(academicLevel.id> 0){
             return connection.sendPutBody(configEdit, academicLevel);
         }
     } else {
         return connection.sendPostBody(config,academicLevel);
     }
+}
+
+export const deleteAcademicLevel = (id) => {
+    const url = URL_API + "api/AcademicLevel/" + id;
+    return connection.sendDeleteBody(url);
 }

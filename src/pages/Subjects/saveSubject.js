@@ -10,7 +10,7 @@ import withReactContent from 'sweetalert2-react-content'
 const SaveSubject = (props) => {
 
     const MySwal = withReactContent(Swal)
-    const [idEdit, setIdEdit] = useState(-1);
+    const [idEdit, setIdEdit] = useState(undefined);
     const [name, setName] = useState("");
 
     useEffect(() => {
@@ -19,14 +19,14 @@ const SaveSubject = (props) => {
             setIdEdit(props.subject.id);
         }else{
             setName("");
-            setIdEdit(-1);
+            setIdEdit(undefined);
         }
     }, [props.subject])
 
 
     async function save() {
         var subject = {};
-        if (idEdit > 0) {
+        if (idEdit != undefined) {
             subject.id = idEdit;
         }
         if (name.trim() == "") {
@@ -35,12 +35,12 @@ const SaveSubject = (props) => {
                 title: 'Error',
                 text: "Debe llenar el campo de nombre de la materia.",
             });
+            return;
         } else {
             subject.name = name;
         }
 
         var resp = await apiSubject.save(subject);
-        props.setReloadTable(true);
         if (resp.response != undefined) {
             if (resp.response.status != 200) {
                 MySwal.fire({
@@ -56,6 +56,7 @@ const SaveSubject = (props) => {
             title: 'Ok',
             text: "Se guardo Correctamente"
         });
+        props.setReloadTable(true);
         clean();
     }
 
