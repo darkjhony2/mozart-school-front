@@ -4,10 +4,12 @@ import * as apiStudent from '../../api/apiStudent'
 import { Button, Card, Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 
 const StudentList = props => {
   const [students, setStudents] = useState([]);
-    //const MySwal = withReactContent(Swal)
+  const MySwal = withReactContent(Swal)
   
     useEffect(() => {
       fillSections();
@@ -25,27 +27,27 @@ const StudentList = props => {
       setStudents(resp);
     }
   
-    // async function deleteSubject(id) {
-    //   var resp = await apiSubject.deleteSubject(id);
-    //   if (resp.response != undefined) {
-    //     if (resp.response.status != 200) {
-    //       MySwal.fire({
-    //         icon: 'error',
-    //         title: 'Error',
-    //         text: resp.response.data.detail,
-    //       });
-    //       return;
-    //     }
-    //   }
-    //   MySwal.fire({
-    //     icon: 'success',
-    //     title: 'Ok',
-    //     text: "Se guardo Correctamente"
-    //   });
-    //   props.setReloadTable(true);
-    //   props.setName("");
-    //   props.setIdEdit(undefined);
-    // }
+    async function deleteStudent(id) {
+      var resp = await apiStudent.deleteStudent(id);
+      if (resp.response != undefined) {
+        if (resp.response.status != 200) {
+          MySwal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: resp.response.data.detail,
+          });
+          return;
+        }
+      }
+      MySwal.fire({
+        icon: 'success',
+        title: 'Ok',
+        text: "Se guardo Correctamente"
+      });
+      props.setReloadTable(true);
+      props.setName("");
+      props.setIdEdit(undefined);
+    }
   
     return (
       <Card body>
