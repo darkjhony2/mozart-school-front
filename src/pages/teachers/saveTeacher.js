@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as apiTeacher from '../../api/apiTeacher'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import SelectDocumentType from '../../components/comboBoxes/selectDocumentType'
+import SelectGender from '../../components/comboBoxes/selectGender'
 
 const SaveTeacher = (props) => {
 
@@ -178,7 +180,7 @@ const SaveTeacher = (props) => {
 
     return (
         <Card body>
-            <h5>Nueva Materia</h5>
+            <h5>Nuevo Docente</h5>
             <hr />
             <Row>
                 <Col sm="8">
@@ -199,14 +201,14 @@ const SaveTeacher = (props) => {
                         <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
-                        
+                        <SelectDocumentType documentType = { documentType } setDocumentType = { setDocumentType } />
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Número de documento</Label>
                         <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={documentNumber} onChange={e => setDocumentNumber(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
-                        
+                        <SelectGender gender = { gender } setGender = { setGender } />
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Correo</Label>
