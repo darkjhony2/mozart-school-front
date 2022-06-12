@@ -6,16 +6,16 @@ import SaveTeacher from './saveTeacher';
 
 const Teachers = props => {
     const [reloadTable, setReloadTable] = useState(false);
-    //const [academicLevel, setAcademicLevel] = useState(null);
+    const [teacher, setTeacher] = useState(null);
 
     return (
         <Container fluid className='p-4 bg-smoke' style={{height: window.innerHeight}}>
             <Row>
                 <Col sm="8">
-                    <TeacherList />
+                    <TeacherList setReloadTable={setReloadTable} reloadTable={reloadTable} setTeacher = { setTeacher } />
                 </Col>
                 <Col sm="4">
-                    <SaveTeacher />
+                    <SaveTeacher setReloadTable = { setReloadTable } teacher = { teacher } />
                 </Col>
             </Row>
         </Container>
