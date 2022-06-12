@@ -51,7 +51,7 @@ const StudentList = props => {
       <Card body>
         <h5>Alumnos</h5>
         <hr />
-        <Table size='sm' hover bordered className='bg-forms'>
+        <Table size='sm' hover bordered className='bg-forms' responsive>
           <thead>
             <tr>
             <th>Nombre</th>

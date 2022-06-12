@@ -62,7 +62,7 @@ const ClassroomList = props => {
       <Card body>
         <h5>Salones de Clase</h5>
         <hr />
-        <Table size='sm' hover bordered className='bg-forms'>
+        <Table size='sm' hover bordered className='bg-forms' responsive>
           <thead>
             <tr>
               <th>Grado</th>

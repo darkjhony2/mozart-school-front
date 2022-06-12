@@ -54,7 +54,7 @@ const SubjectList = (props) => {
     <Card body>
         <h5>Materias</h5>
         <hr/>
-        <Table size='sm' hover bordered className='bg-forms'>
+        <Table size='sm' hover bordered className='bg-forms' responsive>
             <thead>
                 <tr>
                     <th>Nombre</th>

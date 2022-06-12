@@ -17,10 +17,15 @@ export const save = (shift) => {
         let configEdit = {
             url: URL_API + "api/Shift/" + shift.id,
         }
-        if(shift.id.trim() != ""){
+        if(shift.id > 0){
             return connection.sendPutBody(configEdit, shift);
         }
     } else {
         return connection.sendPostBody(config,shift);
     }
+}
+
+export const deleteShift = (id) => {
+    const url = URL_API + "api/Shift/" + id;
+    return connection.sendDeleteBody(url);
 }
