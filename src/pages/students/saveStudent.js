@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import { Button, Card, Col, FormGroup, Input, Label, Row } from 'reactstrap'
 import { faFloppyDisk, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,15 +6,13 @@ import * as apiStudent from '../../api/apiStudent'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import SelectAcademicLevels from '../../components/comboBoxes/selectAcademicLevel'
-import SelectAcademicScales from '../../components/comboBoxes/selectAcademicScale'
 import SelectDocumentType from '../../components/comboBoxes/selectDocumentType'
 import SelectGender from '../../components/comboBoxes/selectGender'
-import { type } from '@testing-library/user-event/dist/type'
 
 const SaveStudent = (props) => {
 
     const MySwal = withReactContent(Swal)
-    const [idEdit, setIdEdit] = useState(-1);
+    const [idEdit, setIdEdit] = useState(undefined);
     const [documentType, setDocumentType] = useState(-1);
     const [documentNumber, setDocumentNumber] = useState("");
     const [name, setName] = useState("");
@@ -35,21 +32,14 @@ const SaveStudent = (props) => {
             setGender(props.student.gender);
             setCurrentAcademicLevel(props.student.currentAcademicLevel);
         } else {  
-            setIdEdit(undefined);
-            setDocumentType(-1);
-            setDocumentNumber("");
-            setName("");
-            setLastName("");
-            setMotherLastName("");
-            setGender("");
-            setCurrentAcademicLevel(-1);
+            clean()   
         }
     }, [props.student])
 
 
     async function save() {
         var student = {};
-        if (idEdit > 0) {
+        if (idEdit != undefined) {
             student.id = idEdit;
         }
         if (documentType<1) {
@@ -146,8 +136,14 @@ const SaveStudent = (props) => {
     }
 
     function clean() {
+        setIdEdit(undefined);
+        setDocumentType(-1);
+        setDocumentNumber("");
         setName("");
-        setIdEdit(-1);
+        setLastName("");
+        setMotherLastName("");
+        setGender("");
+        setCurrentAcademicLevel(-1);
     }
 
     return (
