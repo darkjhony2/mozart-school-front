@@ -10,7 +10,7 @@ import withReactContent from 'sweetalert2-react-content'
 const SaveSubject = (props) => {
 
     const MySwal = withReactContent(Swal)
-    const [idEdit, setIdEdit] = useState(undefined);
+    const [idEdit, setIdEdit] = useState(-1);
     const [name, setName] = useState("");
 
     useEffect(() => {

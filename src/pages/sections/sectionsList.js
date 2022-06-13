@@ -9,7 +9,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const SectionsList = props => {
     const [sections, setSections] = useState([]);
-    //const MySwal = withReactContent(Swal)
+    const MySwal = withReactContent(Swal)
   
     useEffect(() => {
       fillSections();
@@ -27,27 +27,27 @@ const SectionsList = props => {
       setSections(resp);
     }
   
-    // async function deleteSubject(id) {
-    //   var resp = await apiSubject.deleteSubject(id);
-    //   if (resp.response != undefined) {
-    //     if (resp.response.status != 200) {
-    //       MySwal.fire({
-    //         icon: 'error',
-    //         title: 'Error',
-    //         text: resp.response.data.detail,
-    //       });
-    //       return;
-    //     }
-    //   }
-    //   MySwal.fire({
-    //     icon: 'success',
-    //     title: 'Ok',
-    //     text: "Se guardo Correctamente"
-    //   });
-    //   props.setReloadTable(true);
-    //   props.setName("");
-    //   props.setIdEdit(undefined);
-    // }
+    async function deleteSection(id) {
+      var resp = await apiSection.deleteSection(id);
+      if (resp.response != undefined) {
+        if (resp.response.status != 200) {
+          MySwal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: resp.response.data.detail,
+          });
+          return;
+        }
+      }
+      MySwal.fire({
+        icon: 'success',
+        title: 'Ok',
+        text: "Se guardo Correctamente"
+      });
+      props.setReloadTable(true);
+      props.setName("");
+      props.setIdEdit(undefined);
+    }
   
     return (
       <Card body>
@@ -66,7 +66,7 @@ const SectionsList = props => {
                 return (
                   <tr key={idx} className="pointer">
                     <td>{sec.name}</td>
-                    <td style={{ textAlign: 'center' }}><Button size='sm'>Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
+                    <td style={{ textAlign: 'center' }}><Button size='sm' onClick={e => deleteSection(sec.id) }>Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
                   </tr>
                 )
               })

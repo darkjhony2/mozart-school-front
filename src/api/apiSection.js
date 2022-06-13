@@ -17,10 +17,14 @@ export const save = (section) => {
         let configEdit = {
             url: URL_API + "api/Section/" + section.id,
         }
-        if(section.id.trim() != ""){
+        if(section.id.trim() > 0){
             return connection.sendPutBody(configEdit, section);
         }
     } else {
         return connection.sendPostBody(config,section);
     }
+}
+export const deleteSection = (id) => {
+    const url = URL_API + "api/Section/" + id;
+    return connection.sendDeleteBody(url);
 }
