@@ -154,22 +154,22 @@ const SaveStudent = (props) => {
                 <Col sm="10">
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Nombre</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del estudiante' value={name} onChange={e => setName(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese nombre del estudiante' name= 'txtName' value={name} onChange={e => setName(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Apellido Paterno</Label>
-                        <Input size='sm' placeholder='Ingrese apellido paterno del estudiante' value={lastName} onChange={e => setLastName(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese apellido paterno del estudiante' name= 'txtLastName' value={lastName} onChange={e => setLastName(e.target.value)}></Input>
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Apellido Materno</Label>
-                        <Input size='sm' placeholder='Ingrese apellido materno del estudiante' value={motherLastName} onChange={e => setMotherLastName(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese apellido materno del estudiante' name= 'txtMotherLastName' value={motherLastName} onChange={e => setMotherLastName(e.target.value)}></Input>
                     </FormGroup>          
                     <FormGroup className='mb-1'>
                        <SelectDocumentType documentType={ documentType } setDocumentType= { setDocumentType }/>
                     </FormGroup>
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Numero de Documento</Label>
-                        <Input size='sm' placeholder='Ingrese numero de documento' value={documentNumber} onChange={e => setDocumentNumber(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese numero de documento' name= 'txtDNI' value={documentNumber} onChange={e => setDocumentNumber(e.target.value)}></Input>
                     </FormGroup>    
                     <FormGroup className='mb-1'>
                        <SelectGender gender={ gender } setGender= { setGender }/>
