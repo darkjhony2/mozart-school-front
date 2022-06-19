@@ -18,6 +18,7 @@ const SaveStudent = (props) => {
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [motherLastName, setMotherLastName] = useState("");
+    const [dateOfBirth, setDateOfBirth] = useState("");
     const [gender, setGender] = useState("");
     const [currentAcademicLevel, setCurrentAcademicLevel] = useState(-1);
 
@@ -29,6 +30,7 @@ const SaveStudent = (props) => {
             setName(props.student.name);
             setLastName(props.student.lastName);
             setMotherLastName(props.student.motherlastName);
+            setDateOfBirth(props.student.dateOfBirth);
             setGender(props.student.gender);
             setCurrentAcademicLevel(props.student.currentAcademicLevel);
         } else {  
@@ -92,7 +94,17 @@ const SaveStudent = (props) => {
             return;
         } else {
             student.mothersLastName =  motherLastName;
-        }            
+        }          
+        if (dateOfBirth.trim() == "") {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Debe llenar el campo fecha de nacimiento",
+            });
+            return;
+        } else {
+            student.dateOfBirth = dateOfBirth;
+        }  
         if (gender.trim() == "") {
             MySwal.fire({
                 icon: 'error',
@@ -142,6 +154,7 @@ const SaveStudent = (props) => {
         setName("");
         setLastName("");
         setMotherLastName("");
+        setDateOfBirth("");
         setGender("");
         setCurrentAcademicLevel(-1);
     }
@@ -163,7 +176,11 @@ const SaveStudent = (props) => {
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Apellido Materno</Label>
                         <Input size='sm' placeholder='Ingrese apellido materno del estudiante' name= 'txtMotherLastName' value={motherLastName} onChange={e => setMotherLastName(e.target.value)}></Input>
-                    </FormGroup>          
+                    </FormGroup>     
+                    <FormGroup className='mb-1'>
+                        <Label size='sm'>Fecha de nacimiento</Label>
+                        <Input size='sm' type='date' value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)}></Input>
+                    </FormGroup>     
                     <FormGroup className='mb-1'>
                        <SelectDocumentType documentType={ documentType } setDocumentType= { setDocumentType }/>
                     </FormGroup>
