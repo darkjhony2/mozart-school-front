@@ -36,7 +36,7 @@ class Menu extends Component {
                     light
                 >
                     <NavbarBrand href="/">
-                        <img src={logo} className="img-fluid" style={{maxHeight: 50}}></img>
+                        <img src={logo} className="img-fluid" style={{ maxHeight: 50 }}></img>
                         <span className='font-white'><b>COLEGIO AMADEO MOZART</b></span>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
@@ -46,39 +46,58 @@ class Menu extends Component {
                             navbar
                         >
                             <NavItem>
-                                <NavLink href={this.state.url_root + '/subjects'}>
-                                    <span className='font-white'>Materias</span>
-                                </NavLink>
+                                <UncontrolledDropdown
+                                    inNavbar
+                                    nav
+                                >
+                                    <DropdownToggle
+                                        caret
+                                        nav
+                                    >
+                                        Admin.
+                                    </DropdownToggle>
+                                    <DropdownMenu right>
+                                        <DropdownItem href={this.state.url_root + '/subjects'}>
+                                            <span>Materias</span>
+                                        </DropdownItem>
+                                        <DropdownItem href={this.state.url_root + "/academicLevels"}>
+                                            <span >Grados</span>
+                                        </DropdownItem>
+                                        <DropdownItem href={this.state.url_root + "/sections"}>
+                                            <span >Secciones</span>
+                                        </DropdownItem>
+                                        <DropdownItem href={this.state.url_root + "/shifts"}>
+                                            <span >Turnos</span>
+                                        </DropdownItem>
+                                        <DropdownItem href={this.state.url_root + "/teachers"}>
+                                            <span >Docentes</span>
+                                        </DropdownItem>
+                                        <DropdownItem href={this.state.url_root + "/students"}>
+                                            <span >Alumnos</span>
+                                        </DropdownItem>
+                                        <DropdownItem href={this.state.url_root + "/classroom"}>
+                                            <span >Salones de Clase</span>
+                                        </DropdownItem>
+                                        <DropdownItem href={this.state.url_root + "/classroom"}>
+                                            <span >Período académico</span>
+                                        </DropdownItem>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
                             </NavItem>
                             <NavItem>
-                                <NavLink href={this.state.url_root + "/academicLevels"}>
-                                <span className='font-white'>Grados</span>
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href={this.state.url_root + "/sections"}>
-                                <span className='font-white'>Secciones</span>
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href={this.state.url_root + "/shifts"}>
-                                <span className='font-white'>Turnos</span>
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href={this.state.url_root + "/teachers"}>
-                                    <span className='font-white'>Docentes</span>
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href={this.state.url_root + "/students"}>
-                                <span className='font-white'>Alumnos</span>
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href={this.state.url_root + "/classroom"}>
-                                <span className='font-white'>Salones de Clase</span>
-                                </NavLink>
+                                <UncontrolledDropdown
+                                    inNavbar
+                                    nav
+                                >
+                                    <DropdownToggle
+                                        caret
+                                        nav
+                                    >
+                                        Control
+                                    </DropdownToggle>
+                                    <DropdownMenu right>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
                             </NavItem>
                         </Nav>
                     </Collapse>
