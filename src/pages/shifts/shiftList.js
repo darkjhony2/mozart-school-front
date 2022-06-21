@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import * as ApiShift from '../../api/apiShift'
-import { Button, Card, Table } from 'reactstrap';
+import { Button, Card, Col, Row, Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
+import Search from '../../components/generals/search';
 
 const ShiftList = props => {
   const [shifts, setShifts] = useState([]);
@@ -53,7 +54,13 @@ const ShiftList = props => {
     <Card body>
       <h5>Turnos</h5>
       <hr />
-      <Table size='sm' hover bordered className='bg-forms' responsive>
+      <Row>
+        <Col sm="6">
+          <Search columnSearch={0} target={'table'} id={'search'} placeholder={'Buscar por Nombre'} />
+        </Col>
+      </Row>
+      <br />
+      <Table id={'table'}  size='sm' hover bordered className='bg-forms' responsive>
         <thead>
           <tr>
             <th>Nombre</th>

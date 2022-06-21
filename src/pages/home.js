@@ -5,7 +5,7 @@ const Home = props => {
   return (
     <div>
         <h1>
-            Hello
+            Bienvenido al DashBoard de la I.E.P. Amadeo Mozart
         </h1>
     </div>
   )

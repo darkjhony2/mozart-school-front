@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import * as apiTeacher from '../../api/apiTeacher';
-import { Button, Card, Table } from 'reactstrap';
+import { Button, Card, Col, Row, Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
+import Search from '../../components/generals/search';
 
 const TeacherList = props => {
   const [teachers, setTeachers] = useState([]);
@@ -51,7 +52,13 @@ const TeacherList = props => {
     <Card body>
       <h5>Docentes</h5>
       <hr />
-      <Table size='sm' hover bordered className='bg-forms' responsive>
+      <Row>
+        <Col sm="6">
+          <Search columnSearch={0} target={'table'} id={'search'} placeholder={'Buscar por Nombre'} />
+        </Col>
+      </Row>
+      <br />
+      <Table id = { 'table' } size='sm' hover bordered className='bg-forms' responsive>
         <thead>
           <tr>
             <th>Nombre</th>
@@ -62,7 +69,6 @@ const TeacherList = props => {
             <th>Teléfono</th>
             <th>Edad</th>
             <th>Genero</th>
-            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -78,7 +84,6 @@ const TeacherList = props => {
                   <td>{teacher.phone}</td>
                   <td>{teacher.age}</td>
                   <td>{teacher.gender}</td>
-                  <td style={{ textAlign: 'center' }}><Button size='sm' onClick={e => deleteTeacher(teacher.id)} >Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
                 </tr>
               )
             })

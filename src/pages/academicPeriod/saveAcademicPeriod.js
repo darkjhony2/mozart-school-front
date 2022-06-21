@@ -1,45 +1,74 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import { Button, Card, Col, FormGroup, Input, Label, Row } from 'reactstrap'
 import { faFloppyDisk, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as apiSubject from '../../api/apiSubject'
+import * as apiAcademicPeriod from '../../api/apiAcademicPeriod'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
-const SaveSubject = (props) => {
+const SaveAcademicPeriod = (props) => {
 
     const MySwal = withReactContent(Swal)
     const [idEdit, setIdEdit] = useState(-1);
     const [name, setName] = useState("");
+    const [fechaInicio, setFechaInicio] = useState("");
+    const [fechaFin, setFechaFin] = useState("");
 
     useEffect(() => {
-        if (props.subject != null) {
-            setName(props.subject.name);
-            setIdEdit(props.subject.id);
+        if (props.academicPeriod != null) {
+            setName(props.academicPeriod.name);
+            setIdEdit(props.academicPeriod.id);
+            setFechaInicio(props.academicPeriod.startDate);
+            setFechaFin(props.academicPeriod.endDate);
         }else{
             setName("");
             setIdEdit(undefined);
+            setFechaInicio("");
+            setFechaFin("");
         }
-    }, [props.subject])
+    }, [props.academicPeriod])
+
 
     async function save() {
-        var subject = {};
+        var academicPeriod = {};
         if (idEdit != undefined) {
-            subject.id = idEdit;
+            academicPeriod.id = idEdit;
         }
         if (name.trim() == "") {
             MySwal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: "Debe llenar el campo de nombre de la materia.",
+                text: "Debe llenar el campo de nombre del Período Académico.",
             });
             return;
         } else {
-            subject.name = name;
+            academicPeriod.name = name;
         }
 
-        var resp = await apiSubject.save(subject);
+        if (fechaInicio.trim() == "") {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Debe seleccionar una fecha de Inicio.",
+            });
+            return;
+        } else {
+            academicPeriod.startDate = fechaInicio;
+        }
+
+        if (fechaFin.trim() == "") {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Debe seleccionar una fecha de Fin.",
+            });
+            return;
+        } else {
+            academicPeriod.endDate = fechaFin;
+        }
+
+
+        var resp = await apiAcademicPeriod.save(academicPeriod);
         if (resp.response != undefined) {
             if (resp.response.status != 200) {
                 MySwal.fire({
@@ -62,17 +91,27 @@ const SaveSubject = (props) => {
     function clean() {
         setName("");
         setIdEdit(undefined);
+        setFechaInicio("");
+        setFechaFin("");
     }
 
     return (
         <Card body>
-            <h5>Nueva Materia</h5>
+            <h5>Nuevo Periodo Académico</h5>
             <hr />
             <Row>
                 <Col sm="8">
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Nombre</Label>
                         <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={name} onChange={e => setName(e.target.value)}></Input>
+                    </FormGroup>
+                    <FormGroup className='mb-1'>
+                        <Label size='sm'>Fecha Inicio:</Label>
+                        <Input type='date' size='sm' value={fechaInicio} onChange={e => setFechaInicio(e.target.value)}></Input>
+                    </FormGroup>
+                    <FormGroup className='mb-1'>
+                        <Label size='sm'>Fecha Fin:</Label>
+                        <Input type='date' size='sm'value={fechaFin} onChange={e => setFechaFin(e.target.value)}></Input>
                     </FormGroup>
                     <Row>
                     <Col sm="5">
@@ -88,6 +127,6 @@ const SaveSubject = (props) => {
     )
 }
 
-SaveSubject.propTypes = {}
+SaveAcademicPeriod.propTypes = {}
 
-export default SaveSubject
+export default SaveAcademicPeriod

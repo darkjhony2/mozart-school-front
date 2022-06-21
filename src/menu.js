@@ -11,6 +11,7 @@ import Teachers from './pages/teachers/teachers';
 import Students from './pages/students/students';
 import Classrooms from './pages/classrooms/classrooms';
 import logo from './assets/img/logo.png'
+import AcademicPeriods from './pages/academicPeriod/academicPeriods';
 
 class Menu extends Component {
 
@@ -78,7 +79,7 @@ class Menu extends Component {
                                         <DropdownItem href={this.state.url_root + "/classroom"}>
                                             <span >Salones de Clase</span>
                                         </DropdownItem>
-                                        <DropdownItem href={this.state.url_root + "/classroom"}>
+                                        <DropdownItem href={this.state.url_root + "/"}>
                                             <span >Período académico</span>
                                         </DropdownItem>
                                     </DropdownMenu>
@@ -96,6 +97,12 @@ class Menu extends Component {
                                         Control
                                     </DropdownToggle>
                                     <DropdownMenu right>
+                                        <DropdownItem href={this.state.url_root + "/attendance"}>
+                                            <span >Asistencia</span>
+                                        </DropdownItem>
+                                        <DropdownItem href={this.state.url_root + "/grades"}>
+                                            <span >Notas</span>
+                                        </DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                             </NavItem>
@@ -111,6 +118,7 @@ class Menu extends Component {
                         <Route path={'/teachers'} element={<Teachers />} />
                         <Route path={'/students'} element={<Students />} />
                         <Route path={'/classroom'} element={<Classrooms />} />
+                        <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
                         <Route path={'/'} exact={true} element={<Home />} />
                     </Routes>
                 </BrowserRouter>

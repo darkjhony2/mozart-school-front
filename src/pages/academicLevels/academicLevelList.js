@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import * as apiAcademicLevel from '../../api/apiAcademicLevel'
-import { Button, Card, Table } from 'reactstrap';
+import { Button, Card, Col, Row, Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import Search from '../../components/generals/search';
 
 
 const AcademicLevelList = props => {
@@ -53,7 +54,13 @@ const AcademicLevelList = props => {
     <Card body>
       <h5>Grados Academicos</h5>
       <hr />
-      <Table size='sm' hover bordered className='bg-forms' responsive>
+      <Row>
+        <Col sm="6">
+          <Search columnSearch={0} target={'table'} id={'search'} placeholder={'Buscar por Nombre'} />
+        </Col>
+      </Row>
+      <br/>
+      <Table id = { 'table' } size='sm' hover bordered className='bg-forms' responsive>
         <thead>
           <tr>
             <th>Nombre</th>
@@ -66,11 +73,11 @@ const AcademicLevelList = props => {
           {
             academicLevels.map((al, idx) => {
               return (
-                <tr key={idx} className="pointer" onClick={ e => props.setAcademicLevel(al)} >
+                <tr key={idx} className="pointer" onClick={e => props.setAcademicLevel(al)} >
                   <td>{al.level}</td>
                   <td>{al.scale}</td>
                   <td>{al.previousAcademicLevel}</td>
-                  <td style={{ textAlign: 'center' }}><Button size='sm' onClick = { e => deleteAcademicLevel(al.id) } >Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
+                  <td style={{ textAlign: 'center' }}><Button size='sm' onClick={e => deleteAcademicLevel(al.id)} >Eliminar <FontAwesomeIcon icon={faTrash} /> </Button></td>
                 </tr>
               )
             })
