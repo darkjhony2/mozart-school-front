@@ -79,7 +79,7 @@ class Menu extends Component {
                                         <DropdownItem href={this.state.url_root + "/classroom"}>
                                             <span >Salones de Clase</span>
                                         </DropdownItem>
-                                        <DropdownItem href={this.state.url_root + "/"}>
+                                        <DropdownItem href={this.state.url_root + "/academicPeriods"}>
                                             <span >Período académico</span>
                                         </DropdownItem>
                                     </DropdownMenu>
@@ -119,7 +119,7 @@ class Menu extends Component {
                         <Route path={'/students'} element={<Students />} />
                         <Route path={'/classroom'} element={<Classrooms />} />
                         <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
-                        <Route path={'/'} exact={true} element={<Home />} />
+                        <Route path={'/mozart-school-front'} exact={true} element={<Home />} />
                     </Routes>
                 </BrowserRouter>
             </div>
