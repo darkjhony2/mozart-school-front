@@ -38,7 +38,7 @@ class Menu extends Component {
                     expand="md"
                     light
                 >
-                    <NavbarBrand href={'/'}>
+                    <NavbarBrand href={'/home'}>
                         <img src={logo} className="img-fluid" style={{ maxHeight: 50 }}></img>
                         <span className='font-white'><b>COLEGIO AMADEO MOZART</b></span>
                     </NavbarBrand>
@@ -122,8 +122,8 @@ class Menu extends Component {
                         <Route path={'/classroom'} element={<Classrooms />} />
                         <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
                         <Route path={'/attendance'} element = {<Attendances />} />
-                        <Route path={'/'} exact={true} element={<Home />} />
-                        <Route path={'/login'} exact={true} element={<Login />} />
+                        <Route path={'/'} exact={true} element={<Login />} />
+                        <Route path={'/home'} exact={true} element={<Home />} />
                     </Routes>
                 </BrowserRouter>
             </div>
