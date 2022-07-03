@@ -12,6 +12,8 @@ import Students from './pages/students/students';
 import Classrooms from './pages/classrooms/classrooms';
 import logo from './assets/img/logo.png'
 import AcademicPeriods from './pages/academicPeriod/academicPeriods';
+import Attendances from './pages/attendances/attendances';
+import Login from './login';
 
 class Menu extends Component {
 
@@ -19,7 +21,7 @@ class Menu extends Component {
         super();
         this.state = {
             isOpen: false,
-            url_root: '/mozart-school-front'
+            url_root: ''
         }
     }
 
@@ -36,7 +38,7 @@ class Menu extends Component {
                     expand="md"
                     light
                 >
-                    <NavbarBrand href="/">
+                    <NavbarBrand href={'/'}>
                         <img src={logo} className="img-fluid" style={{ maxHeight: 50 }}></img>
                         <span className='font-white'><b>COLEGIO AMADEO MOZART</b></span>
                     </NavbarBrand>
@@ -119,7 +121,9 @@ class Menu extends Component {
                         <Route path={'/students'} element={<Students />} />
                         <Route path={'/classroom'} element={<Classrooms />} />
                         <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
-                        <Route path={'/mozart-school-front'} exact={true} element={<Home />} />
+                        <Route path={'/attendance'} element = {<Attendances />} />
+                        <Route path={'/'} exact={true} element={<Home />} />
+                        <Route path={'/login'} exact={true} element={<Login />} />
                     </Routes>
                 </BrowserRouter>
             </div>
