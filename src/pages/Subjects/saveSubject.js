@@ -72,7 +72,7 @@ const SaveSubject = (props) => {
                 <Col sm="8">
                     <FormGroup className='mb-1'>
                         <Label size='sm'>Nombre</Label>
-                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={name} onChange={e => setName(e.target.value)}></Input>
+                        <Input size='sm' placeholder='Ingrese nombre del nuevo curso' value={name} name="subject" onChange={e => setName(e.target.value)}></Input>
                     </FormGroup>
                     <Row>
                     <Col sm="5">
