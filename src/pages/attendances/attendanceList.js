@@ -16,7 +16,7 @@ const AttendanceList = props => {
     //const MySwal = withReactContent(Swal)
 
     useEffect(() => {
-        if(classroom != null)
+        if (classroom != null)
             fillStudentClassroom();
     }, [classroom])
 
@@ -40,7 +40,7 @@ const AttendanceList = props => {
                 <hr />
                 <Row>
                     <Col sm='4'>
-                        <SelectClassroom setClassroom = { setClassroom } classroom = { classroom } />
+                        <SelectClassroom setClassroom={setClassroom} classroom={classroom} />
                     </Col>
                     <Col sm="4">
                         <Label size='sm'>Fecha:</Label>
@@ -66,7 +66,7 @@ const AttendanceList = props => {
                                 return (
                                     <tr key={idx} className="pointer">
                                         <td>{st.name} {st.lastName} {st.mothersLastName}</td>
-                                        <td><SelectAttendanceStatus setAttendanceStatus = { setAttendanceStatus } attendanceStatus = { attendanceStatus } /></td>
+                                        <td><SelectAttendanceStatus id={st.id} setAttendanceStatus={setAttendanceStatus} attendanceStatus={attendanceStatus} /></td>
                                     </tr>
                                 )
                             })
