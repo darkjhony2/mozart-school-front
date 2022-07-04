@@ -17,10 +17,12 @@ export const list = (id) => {
 export const save = (academicLevel) => {
     let config = {
         url: URL_API + "api/AcademicLevel",
+        headers
     }
     if(academicLevel.id != undefined){
         let configEdit = {
             url: URL_API + "api/AcademicLevel/" + academicLevel.id,
+            headers
         }
         if(academicLevel.id> 0){
             return connection.sendPutBody(configEdit, academicLevel);

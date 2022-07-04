@@ -17,10 +17,12 @@ export const list = () => {
 export const save = (subject) => {
     let config = {
         url: URL_API + "api/Subject",
+        headers
     }
     if(subject.id != undefined){
         let configEdit = {
             url: URL_API + "api/Subject/" + subject.id,
+            headers
         }
         if(subject.id.trim() != ""){
             return connection.sendPutBody(configEdit, subject);

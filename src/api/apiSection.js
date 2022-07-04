@@ -4,7 +4,8 @@ import {URL_API} from '../config'
 export const list = () => {
     let config = {
         method: 'GET',
-        url: URL_API + "api/Section"
+        url: URL_API + "api/Section",
+        headers
     }
     return connection.sendPetition(config);
 }
@@ -12,10 +13,12 @@ export const list = () => {
 export const save = (section) => {
     let config = {
         url: URL_API + "api/Section",
+        headers
     }
     if(section.id != undefined){
         let configEdit = {
             url: URL_API + "api/Section/" + section.id,
+            headers
         }
         if(section.id.trim() > 0){
             return connection.sendPutBody(configEdit, section);
