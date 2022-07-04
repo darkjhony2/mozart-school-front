@@ -17,6 +17,7 @@ import Login from './login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import EvaluationTypes from './pages/evaluationTypes/evaluationTypes';
+import Evaluations from './pages/evaluations/evaluations';
 
 class Menu extends Component {
 
@@ -108,11 +109,14 @@ class Menu extends Component {
                                                     caret
                                                     nav
                                                 >
-                                                    Control
+                                                    Gestión
                                                 </DropdownToggle>
                                                 <DropdownMenu right>
                                                     <DropdownItem href={this.state.url_root + "/attendance"}>
                                                         <span >Asistencia</span>
+                                                    </DropdownItem>
+                                                    <DropdownItem href={this.state.url_root + "/evaluations"}>
+                                                        <span >Evaluaciones</span>
                                                     </DropdownItem>
                                                     <DropdownItem href={this.state.url_root + "/grades"}>
                                                         <span >Notas</span>
@@ -152,6 +156,7 @@ class Menu extends Component {
                         <Route path={'/students'} element={<Students />} />
                         <Route path={'/classroom'} element={<Classrooms />} />
                         <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
+                        <Route path={'/evaluations'} element={<Evaluations/>}></Route>
                         <Route path={'/attendance'} element={<Attendances />} />
                         <Route path={'/evaluationTypes'} element={<EvaluationTypes />} />
                         <Route path={'/'} exact={true} element={<Login />} />

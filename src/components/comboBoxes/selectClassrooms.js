@@ -28,7 +28,7 @@ const SelectClassroom = props => {
 
     return (
         <FormGroup className='mb-2'>
-            <Label size='sm'>Salones de Clase:</Label>
+            <Label size='sm'>Salón de Clase:</Label>
             <Input type='select' size='sm' value={props.classroom} onChange = { setClassroom } >
                 <option value={null}>[Seleccione]</option>
                 {classrooms}
