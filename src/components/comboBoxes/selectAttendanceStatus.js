@@ -22,12 +22,33 @@ const SelectAttendanceStatus = (props) => {
     }
 
     function setAttStatus(event) {
-        props.setAttendanceStatus(event.target.value);
+        let attendance = {};
+        let isFound = false;
+        attendance.studentId = props.id;
+        attendance.attendanceStatusId = event.target.value;
+        if (props.attendanceStatus.length > 0) {
+            props.attendanceStatus.forEach(attStat => {
+                if (attStat.studentId == attendance.studentId) {
+                    isFound = true;
+                }
+            })
+            if (!isFound) {
+                props.setAttendanceStatus([...props.attendanceStatus, attendance]);
+            }else{
+                props.attendanceStatus.forEach(attStat => {
+                    if (attStat.studentId == attendance.studentId) {
+                        attStat.attendanceStatusId = attendance.attendanceStatusId;
+                    }
+                })
+            }
+        } else {
+            props.setAttendanceStatus([...props.attendanceStatus, attendance]);
+        }
     }
 
     return (
         <FormGroup className='mb-2'>
-            <Input id={props.id} type='select' size='sm' value={props.attendanceStatus} onChange = { setAttStatus } >
+            <Input id={props.id} type='select' size='sm' onChange={setAttStatus} >
                 <option value={null}>[Seleccione]</option>
                 {attendanceStatus}
             </Input>

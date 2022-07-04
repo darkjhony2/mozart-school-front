@@ -3,6 +3,7 @@ import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import { Button, Card, Col, Input, Label, Row, Table } from 'reactstrap';
 import * as apiStudentClassroom from '../../api/studentClassroom'
+import * as apiAttendance from '../../api/apiAttendance'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import Search from '../../components/generals/search';
@@ -12,7 +13,8 @@ import SelectAttendanceStatus from '../../components/comboBoxes/selectAttendance
 const AttendanceList = props => {
     const [classroom, setClassroom] = useState(null);
     const [students, setStudents] = useState([]);
-    const [attendanceStatus, setAttendanceStatus] = useState(null);
+    const [attendanceStatus, setAttendanceStatus] = useState([]);
+    const [date, setDate] = useState("")
     //const MySwal = withReactContent(Swal)
 
     useEffect(() => {
@@ -33,6 +35,11 @@ const AttendanceList = props => {
         setStudents(resp.students);
     }
 
+    async function saveAttendance() {
+        var resp = await apiAttendance.save(attendanceStatus, classroom, date)
+        alert(resp);
+    }
+
     return (
         <>
             <Card body>
@@ -44,7 +51,7 @@ const AttendanceList = props => {
                     </Col>
                     <Col sm="4">
                         <Label size='sm'>Fecha:</Label>
-                        <Input size={'sm'} type={'date'} />
+                        <Input size={'sm'} type={'date'} value ={ date } onChange= { e => setDate(e.target.value)} />
                     </Col>
                 </Row>
                 <Row>
@@ -66,13 +73,18 @@ const AttendanceList = props => {
                                 return (
                                     <tr key={idx} className="pointer">
                                         <td>{st.name} {st.lastName} {st.mothersLastName}</td>
-                                        <td><SelectAttendanceStatus id={st.id} setAttendanceStatus={setAttendanceStatus} attendanceStatus={attendanceStatus} /></td>
+                                        <td><SelectAttendanceStatus id={st.id} attendanceStatus = { attendanceStatus } setAttendanceStatus = { setAttendanceStatus } /></td>
                                     </tr>
                                 )
                             })
                         }
                     </tbody>
                 </Table>
+                <Row>
+                    <Col sm="">
+                        <Button size='sm' onClick={e => saveAttendance()} >Grabar</Button>
+                    </Col>
+                </Row>
             </Card>
         </>
     )
