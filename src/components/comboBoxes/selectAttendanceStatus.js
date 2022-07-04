@@ -27,7 +27,7 @@ const SelectAttendanceStatus = (props) => {
 
     return (
         <FormGroup className='mb-2'>
-            <Input type='select' size='sm' value={props.attendanceStatus} onChange = { setAttStatus } >
+            <Input id={props.id} type='select' size='sm' value={props.attendanceStatus} onChange = { setAttStatus } >
                 <option value={null}>[Seleccione]</option>
                 {attendanceStatus}
             </Input>

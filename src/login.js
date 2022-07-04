@@ -34,6 +34,7 @@ const Login = props => {
         }
         let response = await apiLogin.login(credentials);
         localStorage.setItem('owl', 'Bearer ' + response.accessToken);
+        localStorage.setItem('role', response.role);
         setUser("");
         setPassword("")
         window.location.href = "http://localhost:3000/home";

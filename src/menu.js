@@ -129,7 +129,11 @@ class Menu extends Component {
                                     ""
                             }
                         </Nav>
-                        <div style={{ float: 'right'}}>
+                        {
+                            localStorage.getItem('owl') == undefined?
+                            ""
+                            :
+                            <div style={{ float: 'right'}}>
                             <div>
                                 <UncontrolledDropdown>
                                     <DropdownToggle style={{backgroundColor: 'rgb(4, 76, 161)'}}
@@ -137,13 +141,14 @@ class Menu extends Component {
                                         <FontAwesomeIcon icon={faCog} />
                                     </DropdownToggle>
                                     <DropdownMenu right>
-                                        <DropdownItem onClick={e => { localStorage.removeItem('owl'); window.location.href = window.location.href = "http://localhost:3000/"; }}>
+                                        <DropdownItem onClick={e => { localStorage.removeItem('owl'); window.location.href = window.location.href = "http://localhost:3000/"; localStorage.removeItem('role') }}>
                                             <span >Cerrar Sesión</span>
                                         </DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                             </div>
                         </div>
+                        }
                     </Collapse>
                 </Navbar>
                 <BrowserRouter basename={this.state.url_root}>
@@ -159,7 +164,7 @@ class Menu extends Component {
                         <Route path={'/evaluations'} element={<Evaluations/>}></Route>
                         <Route path={'/attendance'} element={<Attendances />} />
                         <Route path={'/evaluationTypes'} element={<EvaluationTypes />} />
-                        <Route path={'/'} exact={true} element={<Login />} />
+                        <Route path={'/'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home />} />
                         <Route path={'/home'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home />} />
                     </Routes>
                 </BrowserRouter>
