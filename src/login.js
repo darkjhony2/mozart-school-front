@@ -12,60 +12,71 @@ const Login = props => {
 
     async function login() {
         let credentials = {};
-        if(user == ""){
+        if (user == "") {
             MySwal.fire({
                 icon: 'error',
                 title: 'Error',
                 text: "El campo usuario esta vacío",
             });
             return;
-        }else{
+        } else {
             credentials.username = user;
         }
-        if(password == ""){
+        if (password == "") {
             MySwal.fire({
                 icon: 'error',
                 title: 'Error',
                 text: "El campo contraseña esta vacío",
             });
             return;
-        }else{
+        } else {
             credentials.password = password;
         }
         let response = await apiLogin.login(credentials);
-        localStorage.setItem('owl', 'Bearer ' + response.accessToken);
-        localStorage.setItem('role', response.role);
-        setUser("");
-        setPassword("")
-        window.location.href = "http://localhost:3000/home";
+        console.log(response);
+        if (response.response != undefined) {
+            if (response.response.status != 401) {
+                localStorage.setItem('owl', 'Bearer ' + response.accessToken);
+                localStorage.setItem('role', response.role);
+                setUser("");
+                setPassword("")
+                window.location.href = "http://localhost:3000/home";
+            }
+        } else {
+            localStorage.setItem('owl', 'Bearer ' + response.accessToken);
+            localStorage.setItem('role', response.role);
+            setUser("");
+            setPassword("")
+            window.location.href = "http://localhost:3000/home";
+        }
     }
 
     return (
         <Container fluid className='p-4 bg-smoke' style={{ height: window.innerHeight }}>
             <Row>
-                <Col sm = "3">
+                <Col sm="3">
                     <Card body>
                         <Row>
                             <Col sm="6">
                                 <h4><b>Login</b></h4>
                             </Col>
-                            <hr/>
+                            <hr />
                         </Row>
                         <Row>
-                            <Col sm = "6">
+                            <Col sm="6">
                                 <Label size='sm'>Usuario:</Label>
-                                <Input size={'sm'} value = { user } name= "user" onChange = { e => setUser(e.target.value) } />
+                                <Input size={'sm'} value={user} name="user" onChange={e => setUser(e.target.value)} />
                             </Col>
                         </Row>
                         <Row>
-                            <Col sm = "6">
+                            <Col sm="6">
                                 <Label size='sm'>Contraseña:</Label>
-                                <Input size={'sm'} type='password' name= "password" value = { password } onChange = { e => setPassword(e.target.value) } />
+                                <Input size={'sm'} type='password' name="password" value={password} onChange={e => setPassword(e.target.value)} />
                             </Col>
                         </Row>
                         <Row className='mt-3'>
-                            <Col sm = "2">
-                                <Button size='sm' onClick={ e => login()} >Ingresar</Button>
+                            <Col sm="2">
+                                <Button size='sm' onClick={e => login()} >Ingresar</Button>
                             </Col>
                         </Row>
                     </Card>

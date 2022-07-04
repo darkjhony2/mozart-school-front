@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {UncontrolledCarousel } from 'reactstrap'
+import { UncontrolledCarousel } from 'reactstrap'
 import image1 from '../assets/img/image1.png';
 import image2 from '../assets/img/image2.png';
 import image3 from '../assets/img/image3.png';
@@ -35,9 +35,11 @@ const Home = props => {
       <h2 class="text-center mt-4 mb-2" style={{ color: 'black' }}>
         "La educación es el arma más poderosa que puedes usar para cambiar el mundo"
       </h2>
-      <h7 style={{ color: 'lead', float: 'right' }}>
-        Nelson Mandela
-      </h7>
+      <div style={{float: 'right' , marginRight: '2%'}}>
+        <h7 style={{ color: 'lead'}}>
+          Nelson Mandela
+        </h7>
+      </div>
     </div>
 
   )
