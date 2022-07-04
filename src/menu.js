@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Collapse, DropdownItem, DropdownMenu, DropdownToggle, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, UncontrolledDropdown } from 'reactstrap'
+import { Collapse, DropdownItem, DropdownMenu, DropdownToggle, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, UncontrolledDropdown, Footer } from 'reactstrap'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Subjects from './pages/subjects/subjects';
 import Home from './pages/home'
@@ -130,24 +130,24 @@ class Menu extends Component {
                             }
                         </Nav>
                         {
-                            localStorage.getItem('owl') == undefined?
-                            ""
-                            :
-                            <div style={{ float: 'right'}}>
-                            <div>
-                                <UncontrolledDropdown>
-                                    <DropdownToggle style={{backgroundColor: 'rgb(4, 76, 161)'}}
-                                        caret>
-                                        <FontAwesomeIcon icon={faCog} />
-                                    </DropdownToggle>
-                                    <DropdownMenu right>
-                                        <DropdownItem onClick={e => { localStorage.removeItem('owl'); window.location.href = window.location.href = "http://localhost:3000/"; localStorage.removeItem('role') }}>
-                                            <span >Cerrar Sesión</span>
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </UncontrolledDropdown>
-                            </div>
-                        </div>
+                            localStorage.getItem('owl') == undefined ?
+                                ""
+                                :
+                                <div style={{ float: 'right' }}>
+                                    <div>
+                                        <UncontrolledDropdown>
+                                            <DropdownToggle style={{ backgroundColor: 'rgb(4, 76, 161)' }}
+                                                caret>
+                                                <FontAwesomeIcon icon={faCog} />
+                                            </DropdownToggle>
+                                            <DropdownMenu right>
+                                                <DropdownItem onClick={e => { localStorage.removeItem('owl'); window.location.href = window.location.href = "http://localhost:3000/"; localStorage.removeItem('role') }}>
+                                                    <span >Cerrar Sesión</span>
+                                                </DropdownItem>
+                                            </DropdownMenu>
+                                        </UncontrolledDropdown>
+                                    </div>
+                                </div>
                         }
                     </Collapse>
                 </Navbar>
@@ -161,16 +161,22 @@ class Menu extends Component {
                         <Route path={'/students'} element={<Students />} />
                         <Route path={'/classroom'} element={<Classrooms />} />
                         <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
-                        <Route path={'/evaluations'} element={<Evaluations/>}></Route>
+                        <Route path={'/evaluations'} element={<Evaluations />}></Route>
                         <Route path={'/attendance'} element={<Attendances />} />
                         <Route path={'/evaluationTypes'} element={<EvaluationTypes />} />
                         <Route path={'/'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home />} />
                         <Route path={'/home'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home />} />
                     </Routes>
                 </BrowserRouter>
+                <div class="footer">
+                    <p className='mt-3'>Todos los derechos reservados - 2022 ©℗®</p>
+                </div>
             </div>
+
+
         )
     }
+
 }
 
 Menu.propTypes = {}
