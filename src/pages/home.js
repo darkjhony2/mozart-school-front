@@ -7,7 +7,7 @@ import image3 from '../assets/img/image3.png';
 const Home = props => {
   return (
     <div>
-      <h1 class="text-center mt-5 mb-5" style={{ color: 'black' }}>
+      <h1 class="animate__animated animate__heartBeat text-center mt-5 mb-5" style={{ color: 'black' }}>
         Bienvenido al DashBoard de la I.E.P. Amadeo Mozart
       </h1>
       <UncontrolledCarousel
