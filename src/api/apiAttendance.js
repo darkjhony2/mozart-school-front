@@ -1,5 +1,5 @@
 import * as connection from './connection'
-import {URL_API} from '../config'
+import { URL_API } from '../config'
 
 const headers = {
     "Authorization": localStorage.getItem('owl'),
@@ -14,22 +14,12 @@ export const list = (id) => {
     return connection.sendPetition(config);
 }
 
-export const save = (academicLevel) => {
+export const save = (attendance,id,date) => {
     let config = {
-        url: URL_API + "api/AcademicLevel",
+        url: URL_API + "api/AttendanceRecord/classroom/" + id + "/date/" + date,
         headers
     }
-    if(academicLevel.id != undefined){
-        let configEdit = {
-            url: URL_API + "api/AcademicLevel/" + academicLevel.id,
-            headers
-        }
-        if(academicLevel.id> 0){
-            return connection.sendPutBody(configEdit, academicLevel);
-        }
-    } else {
-        return connection.sendPostBody(config,academicLevel);
-    }
+    return connection.sendPostBody(config, attendance);
 }
 
 export const deleteAcademicLevel = (id) => {
@@ -37,5 +27,5 @@ export const deleteAcademicLevel = (id) => {
     let config = {
         headers
     }
-    return connection.sendDeleteBody(url,config);
+    return connection.sendDeleteBody(url, config);
 }

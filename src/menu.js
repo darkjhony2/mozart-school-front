@@ -168,6 +168,9 @@ class Menu extends Component {
                         <Route path={'/home'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home />} />
                     </Routes>
                 </BrowserRouter>
+                <br/>
+                <br/>
+                <br/>
                 <div class="footer">
                     <p className='mt-3'>Todos los derechos reservados - 2022 ©℗®</p>
                 </div>
