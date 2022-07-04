@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import * as apiAcademicScale from '../../api/apiAcademicScale'
 import { FormGroup, Input, Label } from 'reactstrap';
 

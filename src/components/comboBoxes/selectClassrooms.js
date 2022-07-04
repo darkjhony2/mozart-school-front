@@ -30,7 +30,7 @@ const SelectClassroom = props => {
         <FormGroup className='mb-2'>
             <Label size='sm'>Salones de Clase:</Label>
             <Input type='select' size='sm' value={props.classroom} onChange = { setClassroom } >
-                <option value='-1'>[Seleccione]</option>
+                <option value={null}>[Seleccione]</option>
                 {classrooms}
             </Input>
         </FormGroup>

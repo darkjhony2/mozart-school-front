@@ -16,6 +16,7 @@ import Attendances from './pages/attendances/attendances';
 import Login from './login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
+import EvaluationTypes from './pages/evaluationTypes/evaluationTypes';
 
 class Menu extends Component {
 
@@ -92,6 +93,9 @@ class Menu extends Component {
                                                     <DropdownItem href={this.state.url_root + "/academicPeriods"}>
                                                         <span >Período académico</span>
                                                     </DropdownItem>
+                                                    <DropdownItem href={this.state.url_root + "/evaluationTypes"}>
+                                                        <span >Tipos de Evaluaciones</span>
+                                                    </DropdownItem>
                                                 </DropdownMenu>
                                             </UncontrolledDropdown>
                                         </NavItem>
@@ -149,6 +153,7 @@ class Menu extends Component {
                         <Route path={'/classroom'} element={<Classrooms />} />
                         <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
                         <Route path={'/attendance'} element={<Attendances />} />
+                        <Route path={'/evaluationTypes'} element={<EvaluationTypes />} />
                         <Route path={'/'} exact={true} element={<Login />} />
                         <Route path={'/home'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home />} />
                     </Routes>

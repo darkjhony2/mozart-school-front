@@ -2,60 +2,36 @@ import React, { useEffect, useState } from 'react'
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import { Button, Card, Col, Input, Label, Row, Table } from 'reactstrap';
-import * as apiClassroom from '../../api/apiClassroom'
+import * as apiStudentClassroom from '../../api/studentClassroom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import Search from '../../components/generals/search';
 import SelectClassroom from '../../components/comboBoxes/selectClassrooms';
+import SelectAttendanceStatus from '../../components/comboBoxes/selectAttendanceStatus';
 
 const AttendanceList = props => {
-    const [classrooms, setClassrooms] = useState([]);
-    const [showModalSchedule, setShowModalSchedule] = useState(false);
-    const [idClassroom, setIdClassroom] = useState("");
+    const [classroom, setClassroom] = useState(null);
+    const [students, setStudents] = useState([]);
+    const [attendanceStatus, setAttendanceStatus] = useState(null);
     //const MySwal = withReactContent(Swal)
 
     useEffect(() => {
-        fillClassrooms();
-    }, [])
+        if(classroom != null)
+            fillStudentClassroom();
+    }, [classroom])
 
     useEffect(() => {
         if (props.reloadTable) {
-            fillClassrooms();
+            fillStudentClassroom();
             props.setReloadTable(false);
         }
     }, [props.reloadTable])
 
-    async function fillClassrooms() {
-        var resp = await apiClassroom.list(2022);
-        setClassrooms(resp);
+    async function fillStudentClassroom() {
+        var resp = await apiStudentClassroom.listByClassroom(classroom);
+        console.log(resp.students)
+        setStudents(resp.students);
     }
-
-    function showSchedule(id) {
-        setShowModalSchedule(true);
-        setIdClassroom(id);
-    }
-
-    // async function deleteSubject(id) {
-    //   var resp = await apiSubject.deleteSubject(id);
-    //   if (resp.response != undefined) {
-    //     if (resp.response.status != 200) {
-    //       MySwal.fire({
-    //         icon: 'error',
-    //         title: 'Error',
-    //         text: resp.response.data.detail,
-    //       });
-    //       return;
-    //     }
-    //   }
-    //   MySwal.fire({
-    //     icon: 'success',
-    //     title: 'Ok',
-    //     text: "Se guardo Correctamente"
-    //   });
-    //   props.setReloadTable(true);
-    //   props.setName("");
-    //   props.setIdEdit(undefined);
-    // }
 
     return (
         <>
@@ -64,7 +40,7 @@ const AttendanceList = props => {
                 <hr />
                 <Row>
                     <Col sm='4'>
-                        <SelectClassroom />
+                        <SelectClassroom setClassroom = { setClassroom } classroom = { classroom } />
                     </Col>
                     <Col sm="4">
                         <Label size='sm'>Fecha:</Label>
@@ -80,21 +56,17 @@ const AttendanceList = props => {
                 <Table id={'table'} size='sm' hover bordered className='bg-forms' responsive>
                     <thead>
                         <tr>
-                            <th>Nombre</th>
+                            <th>Nombres y Apellidos</th>
                             <th>Estado</th>
-                            <th>Turno</th>
-                            <th>Tutor</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            classrooms.map((cl, idx) => {
+                            students.map((st, idx) => {
                                 return (
                                     <tr key={idx} className="pointer">
-                                        <td>{cl.level.level}</td>
-                                        <td>{cl.section.name}</td>
-                                        <td>{cl.shift.name}</td>
-                                        <td>{cl.tutor.name}</td>
+                                        <td>{st.name} {st.lastName} {st.mothersLastName}</td>
+                                        <td><SelectAttendanceStatus setAttendanceStatus = { setAttendanceStatus } attendanceStatus = { attendanceStatus } /></td>
                                     </tr>
                                 )
                             })
