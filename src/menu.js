@@ -14,6 +14,8 @@ import logo from './assets/img/logo.png'
 import AcademicPeriods from './pages/academicPeriod/academicPeriods';
 import Attendances from './pages/attendances/attendances';
 import Login from './login';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 class Menu extends Component {
 
@@ -31,6 +33,7 @@ class Menu extends Component {
         var value = !this.state.isOpen;
         this.setState({ isOpen: value });
     }
+
 
     render() {
         return (
@@ -50,67 +53,89 @@ class Menu extends Component {
                             className="me-auto"
                             navbar
                         >
-                            <NavItem>
-                                <UncontrolledDropdown
-                                    inNavbar
-                                    nav
-                                >
-                                    <DropdownToggle
-                                        caret
-                                        nav
-                                    >
-                                        Admin.
-                                    </DropdownToggle>
-                                    <DropdownMenu right>
-                                        <DropdownItem href={this.state.url_root + '/subjects'}>
-                                            <span>Materias</span>
-                                        </DropdownItem>
-                                        <DropdownItem href={this.state.url_root + "/academicLevels"}>
-                                            <span >Grados</span>
-                                        </DropdownItem>
-                                        <DropdownItem href={this.state.url_root + "/sections"}>
-                                            <span >Secciones</span>
-                                        </DropdownItem>
-                                        <DropdownItem href={this.state.url_root + "/shifts"}>
-                                            <span >Turnos</span>
-                                        </DropdownItem>
-                                        <DropdownItem href={this.state.url_root + "/teachers"}>
-                                            <span >Docentes</span>
-                                        </DropdownItem>
-                                        <DropdownItem href={this.state.url_root + "/students"}>
-                                            <span >Alumnos</span>
-                                        </DropdownItem>
-                                        <DropdownItem href={this.state.url_root + "/classroom"}>
-                                            <span >Salones de Clase</span>
-                                        </DropdownItem>
-                                        <DropdownItem href={this.state.url_root + "/academicPeriods"}>
-                                            <span >Período académico</span>
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </UncontrolledDropdown>
-                            </NavItem>
-                            <NavItem>
-                                <UncontrolledDropdown
-                                    inNavbar
-                                    nav
-                                >
-                                    <DropdownToggle
-                                        caret
-                                        nav
-                                    >
-                                        Control
-                                    </DropdownToggle>
-                                    <DropdownMenu right>
-                                        <DropdownItem href={this.state.url_root + "/attendance"}>
-                                            <span >Asistencia</span>
-                                        </DropdownItem>
-                                        <DropdownItem href={this.state.url_root + "/grades"}>
-                                            <span >Notas</span>
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </UncontrolledDropdown>
-                            </NavItem>
+                            {
+                                localStorage.getItem('owl') != undefined ?
+                                    <>
+                                        <NavItem>
+                                            <UncontrolledDropdown
+                                                inNavbar
+                                                nav
+                                            >
+                                                <DropdownToggle
+                                                    caret
+                                                    nav
+                                                >
+                                                    Admin.
+                                                </DropdownToggle>
+                                                <DropdownMenu right>
+                                                    <DropdownItem href={this.state.url_root + '/subjects'}>
+                                                        <span>Materias</span>
+                                                    </DropdownItem>
+                                                    <DropdownItem href={this.state.url_root + "/academicLevels"}>
+                                                        <span >Grados</span>
+                                                    </DropdownItem>
+                                                    <DropdownItem href={this.state.url_root + "/sections"}>
+                                                        <span >Secciones</span>
+                                                    </DropdownItem>
+                                                    <DropdownItem href={this.state.url_root + "/shifts"}>
+                                                        <span >Turnos</span>
+                                                    </DropdownItem>
+                                                    <DropdownItem href={this.state.url_root + "/teachers"}>
+                                                        <span >Docentes</span>
+                                                    </DropdownItem>
+                                                    <DropdownItem href={this.state.url_root + "/students"}>
+                                                        <span >Alumnos</span>
+                                                    </DropdownItem>
+                                                    <DropdownItem href={this.state.url_root + "/classroom"}>
+                                                        <span >Salones de Clase</span>
+                                                    </DropdownItem>
+                                                    <DropdownItem href={this.state.url_root + "/academicPeriods"}>
+                                                        <span >Período académico</span>
+                                                    </DropdownItem>
+                                                </DropdownMenu>
+                                            </UncontrolledDropdown>
+                                        </NavItem>
+                                        <NavItem>
+                                            <UncontrolledDropdown
+                                                inNavbar
+                                                nav
+                                            >
+                                                <DropdownToggle
+                                                    caret
+                                                    nav
+                                                >
+                                                    Control
+                                                </DropdownToggle>
+                                                <DropdownMenu right>
+                                                    <DropdownItem href={this.state.url_root + "/attendance"}>
+                                                        <span >Asistencia</span>
+                                                    </DropdownItem>
+                                                    <DropdownItem href={this.state.url_root + "/grades"}>
+                                                        <span >Notas</span>
+                                                    </DropdownItem>
+                                                </DropdownMenu>
+                                            </UncontrolledDropdown>
+                                        </NavItem>
+                                    </>
+                                    :
+                                    ""
+                            }
                         </Nav>
+                        <div style={{ float: 'right'}}>
+                            <div>
+                                <UncontrolledDropdown>
+                                    <DropdownToggle style={{backgroundColor: 'rgb(4, 76, 161)'}}
+                                        caret>
+                                        <FontAwesomeIcon icon={faCog} />
+                                    </DropdownToggle>
+                                    <DropdownMenu right>
+                                        <DropdownItem onClick={e => { localStorage.removeItem('owl'); window.location.href = window.location.href = "http://localhost:3000/"; }}>
+                                            <span >Cerrar Sesión</span>
+                                        </DropdownItem>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
+                            </div>
+                        </div>
                     </Collapse>
                 </Navbar>
                 <BrowserRouter basename={this.state.url_root}>
@@ -123,9 +148,9 @@ class Menu extends Component {
                         <Route path={'/students'} element={<Students />} />
                         <Route path={'/classroom'} element={<Classrooms />} />
                         <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
-                        <Route path={'/attendance'} element = {<Attendances />} />
+                        <Route path={'/attendance'} element={<Attendances />} />
                         <Route path={'/'} exact={true} element={<Login />} />
-                        <Route path={'/home'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home/>} />
+                        <Route path={'/home'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home />} />
                     </Routes>
                 </BrowserRouter>
             </div>

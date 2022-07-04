@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import { Button, Card, Col, FormGroup, Input, Label, Row } from 'reactstrap'
 import { faFloppyDisk, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,6 +15,7 @@ const SaveAcademicLevel = (props) => {
     const [name, setName] = useState("");
     const [scale, setScale] = useState(-1);
     const [previousLevel, setPreviousLevel] = useState(-1);
+    const [reloadList, setReloadList] = useState(false)
 
     useEffect(() => {
         if (props.academicLevel != null) {
@@ -30,6 +30,13 @@ const SaveAcademicLevel = (props) => {
             setPreviousLevel(-1);
         }
     }, [props.academicLevel])
+
+    useEffect(() => {
+        if(props.reloadTable){
+            setReloadList(true);
+        }
+    }, [props.reloadTable])
+    
 
 
     async function save() {
@@ -109,7 +116,8 @@ const SaveAcademicLevel = (props) => {
                         <SelectAcademicScales academicScale={scale} setAcademicScale={setScale} />
                     </FormGroup>
                     <FormGroup className='mb-1'>
-                        <SelectAcademicLevels previousLevelLabel='Grado anterior' academicLevel={previousLevel} setAcademicLevel={setPreviousLevel} />
+                        <SelectAcademicLevels setReloadList = { setReloadList } previousLevelLabel='Grado anterior' academicLevel={previousLevel} 
+                        setAcademicLevel={setPreviousLevel} reloadList = { reloadList } />
                     </FormGroup>
                     <Row>
                         <Col sm="5">
@@ -124,7 +132,5 @@ const SaveAcademicLevel = (props) => {
         </Card>
     )
 }
-
-SaveAcademicLevel.propTypes = {}
 
 export default SaveAcademicLevel

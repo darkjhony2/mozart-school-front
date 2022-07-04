@@ -16,7 +16,7 @@ const AcademicLevels = props => {
                    setAcademicLevel = { setAcademicLevel } />
                 </Col>
                 <Col sm="3">
-                    <SaveAcademicLevel academicLevel = { academicLevel } setReloadTable = { setReloadTable } />
+                    <SaveAcademicLevel academicLevel = { academicLevel } setReloadTable = { setReloadTable } reloadTable = { reloadTable } />
                 </Col>
             </Row>
         </Container>
