@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Collapse, DropdownItem, DropdownMenu, DropdownToggle, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, UncontrolledDropdown } from 'reactstrap'
+import { Collapse, DropdownItem, DropdownMenu, DropdownToggle, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, UncontrolledDropdown, Footer } from 'reactstrap'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Subjects from './pages/subjects/subjects';
 import Home from './pages/home'
@@ -129,10 +129,10 @@ class Menu extends Component {
                                     ""
                             }
                         </Nav>
-                        <div style={{ float: 'right'}}>
+                        <div style={{ float: 'right' }}>
                             <div>
                                 <UncontrolledDropdown>
-                                    <DropdownToggle style={{backgroundColor: 'rgb(4, 76, 161)'}}
+                                    <DropdownToggle style={{ backgroundColor: 'rgb(4, 76, 161)' }}
                                         caret>
                                         <FontAwesomeIcon icon={faCog} />
                                     </DropdownToggle>
@@ -156,16 +156,22 @@ class Menu extends Component {
                         <Route path={'/students'} element={<Students />} />
                         <Route path={'/classroom'} element={<Classrooms />} />
                         <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
-                        <Route path={'/evaluations'} element={<Evaluations/>}></Route>
+                        <Route path={'/evaluations'} element={<Evaluations />}></Route>
                         <Route path={'/attendance'} element={<Attendances />} />
                         <Route path={'/evaluationTypes'} element={<EvaluationTypes />} />
                         <Route path={'/'} exact={true} element={<Login />} />
                         <Route path={'/home'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home />} />
                     </Routes>
                 </BrowserRouter>
+                <div class="footer">
+                    <p className='mt-3'>Todos los derechos reservados - 2022 ©℗®</p>
+                </div>
             </div>
+
+
         )
     }
+
 }
 
 Menu.propTypes = {}
