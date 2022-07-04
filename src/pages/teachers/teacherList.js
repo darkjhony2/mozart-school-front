@@ -61,9 +61,7 @@ const TeacherList = props => {
       <Table id = { 'table' } size='sm' hover bordered className='bg-forms' responsive>
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
+            <th>Nombres y Apellidos</th>
             <th>Tipo de Documento</th>
             <th>Numero de Documento</th>
             <th>Teléfono</th>
@@ -76,9 +74,7 @@ const TeacherList = props => {
             teachers.map((teacher, idx) => {
               return (
                 <tr key={idx} className="pointer">
-                  <td>{teacher.name}</td>
-                  <td>{teacher.lastName}</td>
-                  <td>{teacher.mothersLastName}</td>
+                  <td>{teacher.name} {teacher.lastName} {teacher.mothersLastName}</td>
                   <td>{teacher.documentType}</td>
                   <td>{teacher.documentNumber}</td>
                   <td>{teacher.phone}</td>

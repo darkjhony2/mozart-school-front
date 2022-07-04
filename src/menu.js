@@ -21,8 +21,10 @@ class Menu extends Component {
         super();
         this.state = {
             isOpen: false,
-            url_root: ''
+            url_root: '',
+            owl: localStorage.getItem('owl')
         }
+        console.log(localStorage.getItem('owl'))
     }
 
     toggle = () => {
@@ -123,7 +125,7 @@ class Menu extends Component {
                         <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
                         <Route path={'/attendance'} element = {<Attendances />} />
                         <Route path={'/'} exact={true} element={<Login />} />
-                        <Route path={'/home'} exact={true} element={<Home />} />
+                        <Route path={'/home'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home/>} />
                     </Routes>
                 </BrowserRouter>
             </div>

@@ -33,7 +33,6 @@ const Login = props => {
             credentials.password = password;
         }
         let response = await apiLogin.login(credentials);
-        alert(response.accessToken);
         localStorage.setItem('owl', 'Bearer ' + response.accessToken);
         setUser("");
         setPassword("")
