@@ -33,5 +33,8 @@ export const save = (section) => {
 }
 export const deleteSection = (id) => {
     const url = URL_API + "api/Section/" + id;
-    return connection.sendDeleteBody(url);
+    let config = {
+        headers
+    }
+    return connection.sendDeleteBody(url,config);
 }

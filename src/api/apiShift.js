@@ -34,5 +34,8 @@ export const save = (shift) => {
 
 export const deleteShift = (id) => {
     const url = URL_API + "api/Shift/" + id;
-    return connection.sendDeleteBody(url);
+    let config = {
+        headers
+    }
+    return connection.sendDeleteBody(url,config);
 }

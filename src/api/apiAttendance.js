@@ -34,5 +34,8 @@ export const save = (academicLevel) => {
 
 export const deleteAcademicLevel = (id) => {
     const url = URL_API + "api/AcademicLevel/" + id;
-    return connection.sendDeleteBody(url);
+    let config = {
+        headers
+    }
+    return connection.sendDeleteBody(url,config);
 }

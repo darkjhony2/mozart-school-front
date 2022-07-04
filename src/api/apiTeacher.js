@@ -34,5 +34,8 @@ export const save = (teacher) => {
 
 export const deleteTeacher = (id) => {
     const url = URL_API + "api/Teacher/" + id;
-    return connection.sendDeleteBody(url);
+    let config = {
+        headers
+    }
+    return connection.sendDeleteBody(url,config);
 }

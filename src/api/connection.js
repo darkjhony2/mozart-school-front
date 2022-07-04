@@ -72,11 +72,12 @@ export const sendPostBody = async (config, body) => {
     }
 }
 
-export const sendDeleteBody = async (url) => {
+export const sendDeleteBody = async (url,config) => {
     try {
-        const response = await axios.delete(url);
+        const response = await axios.delete(url, config);
         return response.data;
     } catch (error) {
+        console.log(error)
         if(error.response.status == 401){
             MySwal.fire({
                 icon: 'error',

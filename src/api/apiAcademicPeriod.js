@@ -34,5 +34,8 @@ export const save = (academicPeriod) => {
 
 export const deleteAcademicPeriod = (id) => {
     const url = URL_API + "api/AcademicPeriod/" + id;
-    return connection.sendDeleteBody(url);
+    let config = {
+        headers
+    }
+    return connection.sendDeleteBody(url,config);
 }
