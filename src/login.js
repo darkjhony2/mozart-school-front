@@ -53,13 +53,13 @@ const Login = props => {
                         <Row>
                             <Col sm = "6">
                                 <Label size='sm'>Usuario:</Label>
-                                <Input size={'sm'} value = { user } onChange = { e => setUser(e.target.value) } />
+                                <Input size={'sm'} value = { user } name= "user" onChange = { e => setUser(e.target.value) } />
                             </Col>
                         </Row>
                         <Row>
                             <Col sm = "6">
                                 <Label size='sm'>Contraseña:</Label>
-                                <Input size={'sm'} type='password' value = { password } onChange = { e => setPassword(e.target.value) } />
+                                <Input size={'sm'} type='password' name= "password" value = { password } onChange = { e => setPassword(e.target.value) } />
                             </Col>
                         </Row>
                         <Row className='mt-3'>
