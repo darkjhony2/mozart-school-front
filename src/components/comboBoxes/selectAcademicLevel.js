@@ -11,6 +11,14 @@ const SelectAcademicLevels = props => {
         fillShifts();
     }, [])
 
+    useEffect(() => {
+        if(props.reloadList){
+            fillShifts();
+            props.setReloadList(false);
+        }
+    }, [props.reloadList])
+    
+
     async function fillShifts() {
         await apiAcademicLevel.list().then((response) => {
             var rows = [];

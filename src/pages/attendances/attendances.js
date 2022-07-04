@@ -8,7 +8,7 @@ const Attendances = (props) => {
     return (
         <Container fluid className='p-4 bg-smoke' style={{ height: window.innerHeight }}>
             <Row>
-                <Col sm="6">
+                <Col sm="4">
                     <AttendanceList />
                 </Col>
                 <Col sm="6">
