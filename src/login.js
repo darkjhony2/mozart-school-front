@@ -75,7 +75,7 @@ const Login = props => {
                                     size='sm'
                                     type="text" 
                                     placeholder="username" 
-                                    className="name" 
+                                    className="input-login" 
                                     value={user} 
                                     name="user" 
                                     onChange={e => setUser(e.target.value)}
@@ -87,19 +87,17 @@ const Login = props => {
                                     size='sm'
                                     type="password" 
                                     placeholder="password" 
-                                    className="name" 
+                                    className="input-login" 
                                     name="password" 
                                     value={password} 
                                     onChange={e => setPassword(e.target.value)}
                                 />
                             </div>
                             <div className="login-button mt-3">
-                                <button size='sm' onClick={e => login()}>Login</button>
+                                <button className='button-login' size='sm' onClick={e => login()}>Login</button>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </Container>

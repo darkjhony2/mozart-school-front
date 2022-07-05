@@ -18,6 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import EvaluationTypes from './pages/evaluationTypes/evaluationTypes';
 import Evaluations from './pages/evaluations/evaluations';
+import Grades from './pages/grades/grades';
 
 class Menu extends Component {
 
@@ -133,10 +134,10 @@ class Menu extends Component {
                             localStorage.getItem('owl') == undefined ?
                                 ""
                                 :
-                                <div style={{ float: 'right' }}>
+                                <div style={{ float: 'right'}}>
                                     <div>
                                         <UncontrolledDropdown>
-                                            <DropdownToggle style={{ backgroundColor: 'rgb(4, 76, 161)' }}
+                                            <DropdownToggle style={{ backgroundColor: 'rgb(4, 76, 161)', maxWidth: 50 }}
                                                 caret>
                                                 <FontAwesomeIcon icon={faCog} />
                                             </DropdownToggle>
@@ -160,6 +161,7 @@ class Menu extends Component {
                         <Route path={'/teachers'} element={<Teachers />} />
                         <Route path={'/students'} element={<Students />} />
                         <Route path={'/classroom'} element={<Classrooms />} />
+                        <Route path={'/grades'} element={<Grades />} />
                         <Route path={'/academicPeriods'} element={<AcademicPeriods />} />
                         <Route path={'/evaluations'} element={<Evaluations />}></Route>
                         <Route path={'/attendance'} element={<Attendances />} />
