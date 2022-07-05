@@ -31,7 +31,6 @@ const AttendanceList = props => {
 
     async function fillStudentClassroom() {
         var resp = await apiStudentClassroom.listByClassroom(classroom);
-        console.log(resp.students)
         setStudents(resp.students);
     }
 

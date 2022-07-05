@@ -29,7 +29,6 @@ class Menu extends Component {
             url_root: '',
             owl: localStorage.getItem('owl')
         }
-        console.log(localStorage.getItem('owl'))
     }
 
     toggle = () => {
@@ -59,48 +58,52 @@ class Menu extends Component {
                             {
                                 localStorage.getItem('owl') != undefined ?
                                     <>
-                                        <NavItem>
-                                            <UncontrolledDropdown
-                                                inNavbar
-                                                nav
-                                            >
-                                                <DropdownToggle
-                                                    caret
+                                        {localStorage.getItem('role') == "Administrator" ?
+                                            <NavItem>
+                                                <UncontrolledDropdown
+                                                    inNavbar
                                                     nav
                                                 >
-                                                    Admin.
-                                                </DropdownToggle>
-                                                <DropdownMenu right>
-                                                    <DropdownItem href={this.state.url_root + '/subjects'}>
-                                                        <span>Materias</span>
-                                                    </DropdownItem>
-                                                    <DropdownItem href={this.state.url_root + "/academicLevels"}>
-                                                        <span >Grados</span>
-                                                    </DropdownItem>
-                                                    <DropdownItem href={this.state.url_root + "/sections"}>
-                                                        <span >Secciones</span>
-                                                    </DropdownItem>
-                                                    <DropdownItem href={this.state.url_root + "/shifts"}>
-                                                        <span >Turnos</span>
-                                                    </DropdownItem>
-                                                    <DropdownItem href={this.state.url_root + "/teachers"}>
-                                                        <span >Docentes</span>
-                                                    </DropdownItem>
-                                                    <DropdownItem href={this.state.url_root + "/students"}>
-                                                        <span >Alumnos</span>
-                                                    </DropdownItem>
-                                                    <DropdownItem href={this.state.url_root + "/classroom"}>
-                                                        <span >Salones de Clase</span>
-                                                    </DropdownItem>
-                                                    <DropdownItem href={this.state.url_root + "/academicPeriods"}>
-                                                        <span >Período académico</span>
-                                                    </DropdownItem>
-                                                    <DropdownItem href={this.state.url_root + "/evaluationTypes"}>
-                                                        <span >Tipos de Evaluaciones</span>
-                                                    </DropdownItem>
-                                                </DropdownMenu>
-                                            </UncontrolledDropdown>
-                                        </NavItem>
+                                                    <DropdownToggle
+                                                        caret
+                                                        nav
+                                                    >
+                                                        Admin.
+                                                    </DropdownToggle>
+                                                    <DropdownMenu right>
+                                                        <DropdownItem href={this.state.url_root + '/subjects'}>
+                                                            <span>Materias</span>
+                                                        </DropdownItem>
+                                                        <DropdownItem href={this.state.url_root + "/academicLevels"}>
+                                                            <span >Grados</span>
+                                                        </DropdownItem>
+                                                        <DropdownItem href={this.state.url_root + "/sections"}>
+                                                            <span >Secciones</span>
+                                                        </DropdownItem>
+                                                        <DropdownItem href={this.state.url_root + "/shifts"}>
+                                                            <span >Turnos</span>
+                                                        </DropdownItem>
+                                                        <DropdownItem href={this.state.url_root + "/teachers"}>
+                                                            <span >Docentes</span>
+                                                        </DropdownItem>
+                                                        <DropdownItem href={this.state.url_root + "/students"}>
+                                                            <span >Alumnos</span>
+                                                        </DropdownItem>
+                                                        <DropdownItem href={this.state.url_root + "/classroom"}>
+                                                            <span >Salones de Clase</span>
+                                                        </DropdownItem>
+                                                        <DropdownItem href={this.state.url_root + "/academicPeriods"}>
+                                                            <span >Período académico</span>
+                                                        </DropdownItem>
+                                                        <DropdownItem href={this.state.url_root + "/evaluationTypes"}>
+                                                            <span >Tipos de Evaluaciones</span>
+                                                        </DropdownItem>
+                                                    </DropdownMenu>
+                                                </UncontrolledDropdown>
+                                            </NavItem>
+                                            :
+                                            ""
+                                        }
                                         <NavItem>
                                             <UncontrolledDropdown
                                                 inNavbar
@@ -116,12 +119,21 @@ class Menu extends Component {
                                                     <DropdownItem href={this.state.url_root + "/attendance"}>
                                                         <span >Asistencia</span>
                                                     </DropdownItem>
-                                                    <DropdownItem href={this.state.url_root + "/evaluations"}>
-                                                        <span >Evaluaciones</span>
-                                                    </DropdownItem>
-                                                    <DropdownItem href={this.state.url_root + "/grades"}>
-                                                        <span >Notas</span>
-                                                    </DropdownItem>
+                                                    {localStorage.getItem('role') != "Administrator" ?
+                                                        <DropdownItem href={this.state.url_root + "/evaluations"}>
+                                                            <span >Evaluaciones</span>
+                                                        </DropdownItem>
+                                                        :
+                                                        ""
+                                                    }
+                                                    {localStorage.getItem('role') != "Administrator" ?
+                                                        <DropdownItem href={this.state.url_root + "/grades"}>
+                                                            <span >Notas</span>
+                                                        </DropdownItem>
+                                                        :
+                                                        ""
+                                                    }
+
                                                 </DropdownMenu>
                                             </UncontrolledDropdown>
                                         </NavItem>
@@ -134,7 +146,7 @@ class Menu extends Component {
                             localStorage.getItem('owl') == undefined ?
                                 ""
                                 :
-                                <div style={{ float: 'right'}}>
+                                <div style={{ float: 'right' }}>
                                     <div>
                                         <UncontrolledDropdown>
                                             <DropdownToggle style={{ backgroundColor: 'rgb(4, 76, 161)', maxWidth: 50 }}
@@ -170,9 +182,9 @@ class Menu extends Component {
                         <Route path={'/home'} exact={true} element={localStorage.getItem('owl') == undefined ? <Login /> : <Home />} />
                     </Routes>
                 </BrowserRouter>
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
                 <div class="footer">
                     <p className='mt-3'>Todos los derechos reservados - 2022 ©℗®</p>
                 </div>

@@ -14,6 +14,7 @@ const EvaluationList = (props) => {
   const MySwal = withReactContent(Swal)
 
   useEffect(() => {
+    if(localStorage.getItem('role') != 'Administrator')
     fillEvaluations();
   }, [])
   

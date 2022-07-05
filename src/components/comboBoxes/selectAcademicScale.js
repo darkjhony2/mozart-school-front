@@ -18,7 +18,6 @@ const SelectAcademicScales = (props) => {
                 )
             })
             setAcademicScales(rows);
-            console.log(response);
         })
     }
 

@@ -37,7 +37,6 @@ const Login = props => {
             credentials.password = password;
         }
         let response = await apiLogin.login(credentials);
-        console.log(response);
         if (response.response != undefined) {
             if (response.response.status != 401) {
                 localStorage.setItem('owl', 'Bearer ' + response.accessToken);

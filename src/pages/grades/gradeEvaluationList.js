@@ -15,14 +15,15 @@ const GradeEvaluationList = props => {
     const [evaluation, setEvaluation] = useState(null)
 
     useEffect(() => {
-        if (evaluation != null)
+        if (evaluation != null && evaluation != "[Seleccione]")
             fillGradeEvaluation();
+        else
+            setGrades([]);
     }, [evaluation])
 
     async function fillGradeEvaluation() {
         var resp = await apiEvaluation.listGrades(evaluation);
         setGrades(resp.scores);
-        console.log(resp.scores)
     }
 
     return (
@@ -32,7 +33,7 @@ const GradeEvaluationList = props => {
                 <hr />
                 <Row>
                     <Col sm="4">
-                        <SelectEvaluation setEvaluation = { setEvaluation } evaluation = { evaluation } />
+                        <SelectEvaluation setEvaluation={setEvaluation} evaluation={evaluation} />
                     </Col>
                 </Row>
                 <Row>

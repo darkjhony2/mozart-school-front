@@ -29,7 +29,6 @@ const TeacherList = props => {
 
   async function deleteTeacher(id) {
     var resp = await apiTeacher.deleteTeacher(id);
-    console.log(resp)
     if (resp.response != undefined) {
       if (resp.response.status != 200) {
         MySwal.fire({

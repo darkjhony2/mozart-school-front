@@ -7,7 +7,8 @@ const SelectEvaluation = props => {
     const [evaluations, setEvaluations] = useState([]);
 
     useEffect(() => {
-        fillEvaluations();
+        if(localStorage.getItem('role') != 'Administrator')
+            fillEvaluations();
     }, [])
 
     async function fillEvaluations() {
