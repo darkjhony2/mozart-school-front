@@ -29,3 +29,12 @@ export const deleteAcademicLevel = (id) => {
     }
     return connection.sendDeleteBody(url, config);
 }
+
+export const listByClassroom = (id, date) => {
+    let config = {
+        method: 'GET',
+        url: URL_API + "api/AttendanceRecord/classroom/" + id + "/date/" + date,
+        headers
+    }
+    return connection.sendPetition(config);
+}

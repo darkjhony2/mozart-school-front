@@ -15,7 +15,7 @@ const AttendanceList = props => {
     const [students, setStudents] = useState([]);
     const [attendanceStatus, setAttendanceStatus] = useState([]);
     const [date, setDate] = useState("")
-    //const MySwal = withReactContent(Swal)
+    const MySwal = withReactContent(Swal)
 
     useEffect(() => {
         if (classroom != null)
@@ -36,8 +36,22 @@ const AttendanceList = props => {
     }
 
     async function saveAttendance() {
-        var resp = await apiAttendance.save(attendanceStatus, classroom, date)
-        alert(resp);
+        var resp = await apiAttendance.save(attendanceStatus, classroom, date);
+        if (resp.response != undefined) {
+            if (resp.response.status != 200) {
+                MySwal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: resp.response.data.detail,
+                });
+                return;
+            }
+        }
+        MySwal.fire({
+            icon: 'success',
+            title: 'Ok',
+            text: "Se guardo Correctamente"
+        });
     }
 
     return (

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Col, Container, Row } from 'reactstrap';
+import AttendanceClassroomList from './attendanceClassroomList';
 import AttendanceList from './attendanceList';
 const Attendances = (props) => {
 
@@ -12,7 +13,7 @@ const Attendances = (props) => {
                     <AttendanceList />
                 </Col>
                 <Col sm="6">
-
+                    <AttendanceClassroomList />
                 </Col>
             </Row>
         </Container>

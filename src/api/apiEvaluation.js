@@ -21,3 +21,20 @@ export const save = (evaluation) => {
     }
     return connection.sendPostBody(config, evaluation);
 }
+
+export const saveEvaluationGrades = (grades, id) => {
+    let config = {
+        url: URL_API + "api/Evaluation/" + id + "/Scores",
+        headers
+    }
+    return connection.sendPostBody(config, grades);
+}
+
+export const listGrades = (id) => {
+    let config = {
+        method: 'GET',
+        url: URL_API + "api/Evaluation/" + id + "/Scores",
+        headers
+    }
+    return connection.sendPetition(config);
+}

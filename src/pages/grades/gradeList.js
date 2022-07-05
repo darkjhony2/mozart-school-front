@@ -3,18 +3,21 @@ import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import { Button, Card, Col, Input, Label, Row, Table } from 'reactstrap';
 import * as apiStudentClassroom from '../../api/studentClassroom'
-import * as apiAttendance from '../../api/apiAttendance'
+import * as apiEvaluation from '../../api/apiEvaluation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import Search from '../../components/generals/search';
 import SelectClassroom from '../../components/comboBoxes/selectClassrooms';
 import SelectAttendanceStatus from '../../components/comboBoxes/selectAttendanceStatus';
+import CustomInput from '../../components/generals/customInput';
+import SelectEvaluation from '../../components/comboBoxes/selectEvaluation';
 
 const GradeList = props => {
     const [classroom, setClassroom] = useState(null);
     const [students, setStudents] = useState([]);
-    const [attendanceStatus, setAttendanceStatus] = useState([]);
-    const [date, setDate] = useState("")
+    const [grades, setGrades] = useState([]);
+    const [evaluation, setEvaluation] = useState(null)
+    const MySwal = withReactContent(Swal)
     //const MySwal = withReactContent(Swal)
 
     useEffect(() => {
@@ -31,27 +34,43 @@ const GradeList = props => {
 
     async function fillStudentClassroom() {
         var resp = await apiStudentClassroom.listByClassroom(classroom);
-        console.log(resp.students)
         setStudents(resp.students);
     }
 
     async function saveAttendance() {
-        var resp = await apiAttendance.save(attendanceStatus, classroom, date)
-        alert(resp);
+        var resp = await apiEvaluation.saveEvaluationGrades(grades, evaluation);
+        if (resp.response != undefined) {
+            if (resp.response.status != 200) {
+                MySwal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: resp.response.data.detail,
+                });
+                return;
+            }
+        }
+        MySwal.fire({
+            icon: 'success',
+            title: 'Ok',
+            text: "Se guardo Correctamente"
+        });
+        setClassroom(null);
+        setStudents([]);
+        setGrades([]);
+        setEvaluation(null);
     }
 
     return (
         <>
             <Card body>
-                <h5>Control de asistencias</h5>
+                <h5>Control de Notas</h5>
                 <hr />
                 <Row>
                     <Col sm='4'>
                         <SelectClassroom setClassroom={setClassroom} classroom={classroom} />
                     </Col>
                     <Col sm="4">
-                        <Label size='sm'>Fecha:</Label>
-                        <Input size={'sm'} type={'date'} value ={ date } onChange= { e => setDate(e.target.value)} />
+                        <SelectEvaluation setEvaluation = { setEvaluation } evaluation = { evaluation } />
                     </Col>
                 </Row>
                 <Row>
@@ -64,7 +83,7 @@ const GradeList = props => {
                     <thead>
                         <tr>
                             <th>Nombres y Apellidos</th>
-                            <th>Estado</th>
+                            <th>Nota</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,7 +92,7 @@ const GradeList = props => {
                                 return (
                                     <tr key={idx} className="pointer">
                                         <td>{st.name} {st.lastName} {st.mothersLastName}</td>
-                                        <td><SelectAttendanceStatus id={st.id} attendanceStatus = { attendanceStatus } setAttendanceStatus = { setAttendanceStatus } /></td>
+                                        <td><CustomInput evaluation = { evaluation } id = { st.id } setGrades = { setGrades } grades = { grades }/></td>
                                     </tr>
                                 )
                             })

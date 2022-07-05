@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Col, Container, Row } from 'reactstrap';
+import GradeEvaluationList from './gradeEvaluationList';
 import GradeList from './gradeList';
 
 const Grades = (props) => {
@@ -13,7 +14,7 @@ const Grades = (props) => {
                     <GradeList />
                 </Col>
                 <Col sm="6">
-
+                    <GradeEvaluationList/>
                 </Col>
             </Row>
         </Container>
