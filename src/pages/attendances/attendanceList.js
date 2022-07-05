@@ -18,8 +18,10 @@ const AttendanceList = props => {
     const MySwal = withReactContent(Swal)
 
     useEffect(() => {
-        if (classroom != null)
+        if (classroom != null && classroom != "[Seleccione]")
             fillStudentClassroom();
+        else
+            setStudents([]);
     }, [classroom])
 
     useEffect(() => {
@@ -51,6 +53,9 @@ const AttendanceList = props => {
             title: 'Ok',
             text: "Se guardo Correctamente"
         });
+        setClassroom(null)
+        setStudents([])
+        setAttendanceStatus([])
     }
 
     return (
@@ -64,7 +69,7 @@ const AttendanceList = props => {
                     </Col>
                     <Col sm="4">
                         <Label size='sm'>Fecha:</Label>
-                        <Input size={'sm'} type={'date'} value ={ date } onChange= { e => setDate(e.target.value)} />
+                        <Input size={'sm'} type={'date'} value={date} onChange={e => setDate(e.target.value)} />
                     </Col>
                 </Row>
                 <Row>
@@ -86,7 +91,7 @@ const AttendanceList = props => {
                                 return (
                                     <tr key={idx} className="pointer">
                                         <td>{st.name} {st.lastName} {st.mothersLastName}</td>
-                                        <td><SelectAttendanceStatus id={st.id} attendanceStatus = { attendanceStatus } setAttendanceStatus = { setAttendanceStatus } /></td>
+                                        <td><SelectAttendanceStatus id={st.id} attendanceStatus={attendanceStatus} setAttendanceStatus={setAttendanceStatus} /></td>
                                     </tr>
                                 )
                             })

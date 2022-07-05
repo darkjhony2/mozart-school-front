@@ -21,8 +21,10 @@ const GradeList = props => {
     //const MySwal = withReactContent(Swal)
 
     useEffect(() => {
-        if (classroom != null)
+        if (classroom != null && classroom != "[Seleccione]")
             fillStudentClassroom();
+        else
+            setStudents([])
     }, [classroom])
 
     useEffect(() => {

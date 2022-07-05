@@ -44,7 +44,7 @@ const SaveEvaluation = (props) => {
             evaluation.evaluationName = name;
         }
 
-        if (evaluationType == null) {
+        if (evaluationType == null|| evaluationType < 0) {
             MySwal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -55,7 +55,7 @@ const SaveEvaluation = (props) => {
             evaluation.evaluationTypeId = evaluationType;
         }
 
-        if (subject == null) {
+        if (subject == null|| subject < 0) {
             MySwal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -66,7 +66,7 @@ const SaveEvaluation = (props) => {
             evaluation.subjectId = subject;
         }
 
-        if (academicPeriod == null) {
+        if (academicPeriod == null|| academicPeriod < 0) {
             MySwal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -77,7 +77,7 @@ const SaveEvaluation = (props) => {
             evaluation.academicPeriodId = academicPeriod;
         }
 
-        if (classroom == null) {
+        if (classroom == null|| classroom < 0) {
             MySwal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -143,6 +143,13 @@ const SaveEvaluation = (props) => {
 
     function clean() {
         setName("");
+        setEvaluationType(-1)
+        setSubject(-1)
+        setAcademicPeriod(-1)
+        setClassroom(-1)
+        setWeight("")
+        setDate("")
+        setScore("")
     }
 
     return (
